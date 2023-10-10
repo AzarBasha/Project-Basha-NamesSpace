@@ -1,0 +1,216 @@
+﻿kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cmm-cpp-recon-task
+  namespace: cmm-uat
+  uid: c1f7d112-ed5f-464a-b029-9410fff58450
+  resourceVersion: '103990987'
+  creationTimestamp: '2022-09-27T14:09:00Z'
+  labels:
+    app.kubernetes.io/instance: cmm-uat
+    velero.io/backup-name: migration-2fc5e-initial-f5gtx
+    velero.io/restore-name: migration-2fc5e-final-vdscp
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"v1","data":{"application.yaml":"spring:\n 
+      application:\n    name: cmm-cpp-recon-task\n  cloud:\n    task:\n     
+      closecontext-enabled: true\n      name: ${spring.application.name}\n     
+      batch:\n        fail-on-job-failure: true\n  datasource:\n   
+      driver-class-name:     \n  jpa:\n    hibernate:\n      ddl-auto: none\n   
+      show-sql: false\n  batch:\n    job:\n      enabled: false\n  mail:\n   
+      host: smtpinternal.wellpoint.com\n    \n  main:\n   
+      allow-bean-definition-overriding: true    \nemail:\n  fromAddress:
+      intge3autonotification@anthem.com\n  toAddress:
+      swyrik.thupili@legatohealth.com\ndatasource:\n  service: false\n  task:
+      true \ne3:\n  recon:\n    compare:\n      chunk:\n        size: 2000\n   
+      splitfile:\n      recordcount: 5000\n    file:\n      processed:
+      /mnt/\u003cenvKey\u003e/recon/processing/\n      output:
+      /mnt/\u003cenvKey\u003e/recon/error/\n    minfile:\n      count:\n       
+      error: MFERRNTFY\n    load:\n      skiplimit: 50\n    report:\n     
+      worksheetname: ReconReport\n    isg:\n      insertquery: \u003e\n       
+      INSERT INTO
+      ISG_DATA_STG(ISG_RCRD_ID,JOB_ID,JOB_RUN_DT,MTCH_RULE_ID,CMPR_IND,EXCLD_IND,DSCRPNCY_CD,APLCTN_ID,APTC_AMT,APTC_END_DT,APTC_STRT_DT,BNFT_END_DT,BNFT_STRT_DT,CSR_AMT,CSR_STRT_DT,CSR_END_DT,BRTH_DT,EFFECTUATED_DT,EXCHNG_ASGND_PLCY_ID,EXCHNG_MBR_ID,EXCHNG_SBSCRBR_ID,GNDR_CD,HIOS_ID,INIT_PREM_PAID_STTS_CD,ISG_TRDG_PRTNR_ID,ISSUER_ASGND_MBR_ID,ISSUER_ASGND_PLCY_ID,ISSUER_ASGND_SBSCRBR_ID,EXTRCT_DT,EXTRCT_TM,LOB_CD,MAILG_ADRS_LINE_1_TXT,MAILG_ADRS_LINE_2_TXT,MAILG_CITY_NM,MAILG_ST_CD,MAILG_ZIP_CD,MAILG_CNTY_CD,MBR_EFFECTUATED_IND,MBR_FRST_NM,MBR_LAST_NM,MBR_MID_NM,MBR_PREM_AMT,MBR_PREM_EFCTV_DT,MBR_PREM_END_DT,PLAN_NM,QHP_ID,QHP_LKUP_KEY,RATG_AREA_ID,RCRD_CD,RLTD_SBSCRBR_IND,RLTNSHP_TYPE_CD,RSDNC_ADRS_LINE_1_TXT,RSDNC_ADRS_LINE_2_TXT,RSDNC_CITY_NM,RSDNC_ST_CD,RSDNC_ZIP_CD,RSDNC_CNTY_CD,SPOE_ID,MBR_SSN,SBSCRBR_FRST_NM,SBSCRBR_IND,SBSCRBR_LAST_NM,SBSCRBR_SSN,TLPHN_NBR,TENNANT_ID,TBACO_USER_IND,TOTL_PREM_AMT,TOTL_PREM_EFCTV_DT,TOTL_PREM_END_DT,TOTL_RSPNSBLY_AMT,TRDG_PRTNR_ID,TRNSCTN_STTS_CD,PREM_DUE_AMT,CNCL_DT,OTHR_PAYMNT_AMT,OTHR_PAYMNT_AMT_STRT_DT,OTHR_PAYMNT_AMT_END_DT,HIX_834_CREATN_DT,DTH_DT,TOTL_MBR_RSPNSBLY_STRT_DT,TOTL_MBR_RSPNSBLY_END_DT,JOB_CD,EXCHNG_ASGND_TRNSCTN_ID,FILE_NM)
+      \n         VALUES
+      (ISG_DATA_STG_SEQ.nextval,:jobId,:jobRunDt,:mtchRuleId,:cmprInd,:excldInd,:dscrpncyCd,:aplctnId,:aptcAmt,:aptcEndDt,:aptcStrtDt,:bnftEndDt,:bnftStrtDt,:csrAmt,:csrStrtDt,:csrEndDt,:brthDt,:effectuatedDt,:exchngAsgndPlcyId,:exchngMbrId,:exchngSbscrbrId,:gndrCd,:hiosId,:initPremPaidSttsCd,:isgTrdgPrtnrId,:issuerAsgndMbrId,:issuerAsgndPlcyId,:issuerAsgndSbscrbrId,:extrctDt,:extrctTm,:lobCd,:mailgAdrsLine1Txt,:mailgAdrsLine2Txt,:mailgCityNm,:mailgStCd,:mailgZipCd,
+      :mailgCntyCd,:mbrEffectuatedInd,:mbrFrstNm,:mbrLastNm,:mbrMidNm,:mbrPremAmt,:mbrPremEfctvDt,:mbrPremEndDt,:planNm,:qhpId,:qhpLkupKey,:ratgAreaId,:rcrdCd,:rltdSbscrbrInd,:rltnshpTypeCd,:rsdncAdrsLine1Txt,:rsdncAdrsLine2Txt,:rsdncCityNm,:rsdncStCd,:rsdncZipCd,:rsdncCntyCd,:spoeId,:mbrSsn,:sbscrbrFrstNm,:sbscrbrInd,:sbscrbrLastNm,:sbscrbrSsn,:tlphnNbr,:tennantId,:tbacoUserInd,:totlPremAmt,:totlPremEfctvDt,:totlPremEndDt,:totlRspnsblyAmt,
+      :trdgPrtnrId,:trnsctnSttsCd,:premDueAmt,:cnclDt,:othrPaymntAmt,:othrPaymntAmtStrtDt,:othrPaymntAmtEndDt,:hix834CreatnDt,:dthDt,:totlMbrRspnsblyStrtDt,:totlMbrRspnsblyEndDt,:jobCd,:exchngAsgndTrnsctnId,:fileNm)\n   
+      exchange:\n      insertquery: \u003e\n        INSERT INTO
+      EXCHNG_DATA_STG(EXCHNG_RCRD_ID,JOB_ID,JOB_RUN_DT,MTCH_RULE_ID,CMPR_IND,EXCLD_IND,DSCRPNCY_CD,APTC_AMT,APTC_END_DT,APTC_STRT_DT,BNFT_END_DT,BNFT_STRT_DT,CSR_AMT,CSR_STRT_DT,CSR_END_DT,BRTH_DT,EXCHNG_MBR_ID,EXCHNG_SBSCRBR_ID,GNDR_CD,HIOS_ID,ISSUER_ASGND_SBSCRBR_ID,MAILG_ADRS_LINE_1_TXT,MAILG_ADRS_LINE_2_TXT,MAILG_CITY_NM,MAILG_ST_CD,MAILG_ZIP_CD,MAILG_CNTY_CD,MBR_FRST_NM,MBR_MID_NM,MBR_LAST_NM,MBR_PREM_AMT,QHP_ID,RATG_AREA_ID,RLTNSHP_TYPE_CD,RSDNC_ADRS_LINE_1_TXT,RSDNC_ADRS_LINE_2_TXT,RSDNC_CITY_NM,RSDNC_ST_CD,RSDNC_ZIP_CD,RSDNC_CNTY_CD,MBR_SSN,SBSCRBR_IND,TBACO_USER_IND,TOTL_PREM_AMT,TOTL_PREM_EFCTV_DT,TOTL_PREM_END_DT,TOTL_RSPNSBLY_AMT,PREM_DUE_AMT,HIX_834_CREATN_DT,CNCL_DT,DTH_DT,TOTL_MBR_RSPNSBLY_STRT_DT,TOTL_MBR_RSPNSBLY_END_DT,OTHR_PAYMNT_AMT,OTHR_PAYMNT_AMT_STRT_DT,OTHR_PAYMNT_AMT_END_DT,JOB_CD,EXCHNG_ASGND_TRNSCTN_ID,FILE_NM,GROUP_TIN,INSRNC_TYPE_CD)
+      VALUES
+      (EXCHNG_DATA_STG_SEQ.nextval,:jobId,:jobRunDt,:mtchRuleId,:cmprInd,:excldInd,:dscrpncyCd,:aptcAmt,:aptcEndDt,:aptcStrtDt,:bnftEndDt,:bnftStrtDt,:csrAmt,:csrStrtDt,:csrEndDt,:brthDt,:exchngMbrId,:exchngSbscrbrId,:gndrCd,:hiosId,:issuerAsgndSbscrbrId,:mailgAdrsLine1Txt,:mailgAdrsLine2Txt,:mailgCityNm,:mailgStCd,:mailgZipCd,:mailgCntyCd,:mbrFrstNm,:mbrMidNm,:mbrLastNm,:mbrPremAmt,:qhpId,:ratgAreaId,:rltnshpTypeCd,:rsdncAdrsLine1Txt,:rsdncAdrsLine2Txt,:rsdncCityNm,:rsdncStCd,:rsdncZipCd,:rsdncCntyCd,:mbrSsn,:sbscrbrInd,:tbacoUserInd,:totlPremAmt,:totlPremEfctvDt,:totlPremEndDt,:totlRspnsblyAmt,:premDueAmt,:hix834CreatnDt,:cnclDt,:dthDt,:totlMbrRspnsblyStrtDt,:totlMbrRspnsblyEndDt,:othrPaymntAmt,:othrPaymntAmtStrtDt,:othrPaymntAmtEndDt,:jobCd,:exchngAsgndTrnsctnId,:fileNm,:groupTin,:insrncTypeCd)"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"cmm-uat"},"name":"cmm-cpp-recon-task","namespace":"cmm-uat"}}
+  managedFields:
+    - manager: velero-server
+      operation: Update
+      apiVersion: v1
+      time: '2022-09-27T14:09:00Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          .: {}
+          'f:application.yaml': {}
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:kubectl.kubernetes.io/last-applied-configuration': {}
+          'f:labels':
+            .: {}
+            'f:app.kubernetes.io/instance': {}
+            'f:velero.io/backup-name': {}
+            'f:velero.io/restore-name': {}
+data:
+  application.yaml: |-
+    spring:
+      application:
+        name: cmm-cpp-recon-task
+      cloud:
+        task:
+          closecontext-enabled: true
+          name: ${spring.application.name}
+          batch:
+            fail-on-job-failure: true
+      datasource:
+        driver-class-name:     
+      jpa:
+        hibernate:
+          ddl-auto: none
+        show-sql: false
+      batch:
+        job:
+          enabled: false
+      mail:
+        host: smtpinternal.wellpoint.com  
+      main:
+        allow-bean-definition-overriding: true    
+    email:
+      fromAddress: intge3autonotification@anthem.com
+      toAddress: swyrik.thupili@legatohealth.com
+    datasource:
+      service: false
+      task: true
+    e3:
+      recon:
+        compare:
+          chunk:
+            size: 2000
+        stloopcount: 2000
+        splitfile:
+          recordcount: 5000
+        file:
+          processed: /mnt/<envKey>/recon/processing/
+          output: /mnt/<envKey>/recon/error/
+        minfile:
+          count:
+            error: MFERRNTFY
+        load:
+          skiplimit: 50
+        report:
+          worksheetname: ReconReport
+        isg:
+          insertquery: >
+            INSERT INTO ISG_DATA_STG(ISG_RCRD_ID,JOB_ID,JOB_RUN_DT,MTCH_RULE_ID,CMPR_IND,EXCLD_IND,DSCRPNCY_CD,APLCTN_ID,APTC_AMT,APTC_END_DT,APTC_STRT_DT,BNFT_END_DT,BNFT_STRT_DT,CSR_AMT,CSR_STRT_DT,CSR_END_DT,BRTH_DT,EFFECTUATED_DT,EXCHNG_ASGND_PLCY_ID,EXCHNG_MBR_ID,EXCHNG_SBSCRBR_ID,GNDR_CD,HIOS_ID,INIT_PREM_PAID_STTS_CD,ISG_TRDG_PRTNR_ID,ISSUER_ASGND_MBR_ID,ISSUER_ASGND_PLCY_ID,ISSUER_ASGND_SBSCRBR_ID,EXTRCT_DT,EXTRCT_TM,LOB_CD,MAILG_ADRS_LINE_1_TXT,MAILG_ADRS_LINE_2_TXT,MAILG_CITY_NM,MAILG_ST_CD,MAILG_ZIP_CD,MAILG_CNTY_CD,MBR_EFFECTUATED_IND,MBR_FRST_NM,MBR_LAST_NM,MBR_MID_NM,MBR_PREM_AMT,MBR_PREM_EFCTV_DT,MBR_PREM_END_DT,PLAN_NM,QHP_ID,QHP_LKUP_KEY,RATG_AREA_ID,RCRD_CD,RLTD_SBSCRBR_IND,RLTNSHP_TYPE_CD,RSDNC_ADRS_LINE_1_TXT,RSDNC_ADRS_LINE_2_TXT,RSDNC_CITY_NM,RSDNC_ST_CD,RSDNC_ZIP_CD,RSDNC_CNTY_CD,SPOE_ID,MBR_SSN,SBSCRBR_FRST_NM,SBSCRBR_IND,SBSCRBR_LAST_NM,SBSCRBR_SSN,TLPHN_NBR,TENNANT_ID,TBACO_USER_IND,TOTL_PREM_AMT,TOTL_PREM_EFCTV_DT,TOTL_PREM_END_DT,TOTL_RSPNSBLY_AMT,TRDG_PRTNR_ID,TRNSCTN_STTS_CD,PREM_DUE_AMT,CNCL_DT,OTHR_PAYMNT_AMT,OTHR_PAYMNT_AMT_STRT_DT,OTHR_PAYMNT_AMT_END_DT,HIX_834_CREATN_DT,DTH_DT,TOTL_MBR_RSPNSBLY_STRT_DT,TOTL_MBR_RSPNSBLY_END_DT,JOB_CD,EXCHNG_ASGND_TRNSCTN_ID,FILE_NM) 
+             VALUES (ISG_DATA_STG_SEQ.nextval,:jobId,:jobRunDt,:mtchRuleId,:cmprInd,:excldInd,:dscrpncyCd,:aplctnId,:aptcAmt,:aptcEndDt,:aptcStrtDt,:bnftEndDt,:bnftStrtDt,:csrAmt,:csrStrtDt,:csrEndDt,:brthDt,:effectuatedDt,:exchngAsgndPlcyId,:exchngMbrId,:exchngSbscrbrId,:gndrCd,:hiosId,:initPremPaidSttsCd,:isgTrdgPrtnrId,:issuerAsgndMbrId,:issuerAsgndPlcyId,:issuerAsgndSbscrbrId,:extrctDt,:extrctTm,:lobCd,:mailgAdrsLine1Txt,:mailgAdrsLine2Txt,:mailgCityNm,:mailgStCd,:mailgZipCd, :mailgCntyCd,:mbrEffectuatedInd,:mbrFrstNm,:mbrLastNm,:mbrMidNm,:mbrPremAmt,:mbrPremEfctvDt,:mbrPremEndDt,:planNm,:qhpId,:qhpLkupKey,:ratgAreaId,:rcrdCd,:rltdSbscrbrInd,:rltnshpTypeCd,:rsdncAdrsLine1Txt,:rsdncAdrsLine2Txt,:rsdncCityNm,:rsdncStCd,:rsdncZipCd,:rsdncCntyCd,:spoeId,:mbrSsn,:sbscrbrFrstNm,:sbscrbrInd,:sbscrbrLastNm,:sbscrbrSsn,:tlphnNbr,:tennantId,:tbacoUserInd,:totlPremAmt,:totlPremEfctvDt,:totlPremEndDt,:totlRspnsblyAmt, :trdgPrtnrId,:trnsctnSttsCd,:premDueAmt,:cnclDt,:othrPaymntAmt,:othrPaymntAmtStrtDt,:othrPaymntAmtEndDt,:hix834CreatnDt,:dthDt,:totlMbrRspnsblyStrtDt,:totlMbrRspnsblyEndDt,:jobCd,:exchngAsgndTrnsctnId,:fileNm)
+        exchange:
+          insertquery: >
+            INSERT INTO EXCHNG_DATA_STG(EXCHNG_RCRD_ID,JOB_ID,JOB_RUN_DT,MTCH_RULE_ID,CMPR_IND,EXCLD_IND,DSCRPNCY_CD,APTC_AMT,APTC_END_DT,APTC_STRT_DT,BNFT_END_DT,BNFT_STRT_DT,CSR_AMT,CSR_STRT_DT,CSR_END_DT,BRTH_DT,EXCHNG_MBR_ID,EXCHNG_SBSCRBR_ID,GNDR_CD,HIOS_ID,ISSUER_ASGND_SBSCRBR_ID,MAILG_ADRS_LINE_1_TXT,MAILG_ADRS_LINE_2_TXT,MAILG_CITY_NM,MAILG_ST_CD,MAILG_ZIP_CD,MAILG_CNTY_CD,MBR_FRST_NM,MBR_MID_NM,MBR_LAST_NM,MBR_PREM_AMT,QHP_ID,RATG_AREA_ID,RLTNSHP_TYPE_CD,RSDNC_ADRS_LINE_1_TXT,RSDNC_ADRS_LINE_2_TXT,RSDNC_CITY_NM,RSDNC_ST_CD,RSDNC_ZIP_CD,RSDNC_CNTY_CD,MBR_SSN,SBSCRBR_IND,TBACO_USER_IND,TOTL_PREM_AMT,TOTL_PREM_EFCTV_DT,TOTL_PREM_END_DT,TOTL_RSPNSBLY_AMT,PREM_DUE_AMT,HIX_834_CREATN_DT,CNCL_DT,DTH_DT,TOTL_MBR_RSPNSBLY_STRT_DT,TOTL_MBR_RSPNSBLY_END_DT,OTHR_PAYMNT_AMT,OTHR_PAYMNT_AMT_STRT_DT,OTHR_PAYMNT_AMT_END_DT,JOB_CD,EXCHNG_ASGND_TRNSCTN_ID,FILE_NM,GROUP_TIN,INSRNC_TYPE_CD) VALUES (EXCHNG_DATA_STG_SEQ.nextval,:jobId,:jobRunDt,:mtchRuleId,:cmprInd,:excldInd,:dscrpncyCd,:aptcAmt,:aptcEndDt,:aptcStrtDt,:bnftEndDt,:bnftStrtDt,:csrAmt,:csrStrtDt,:csrEndDt,:brthDt,:exchngMbrId,:exchngSbscrbrId,:gndrCd,:hiosId,:issuerAsgndSbscrbrId,:mailgAdrsLine1Txt,:mailgAdrsLine2Txt,:mailgCityNm,:mailgStCd,:mailgZipCd,:mailgCntyCd,:mbrFrstNm,:mbrMidNm,:mbrLastNm,:mbrPremAmt,:qhpId,:ratgAreaId,:rltnshpTypeCd,:rsdncAdrsLine1Txt,:rsdncAdrsLine2Txt,:rsdncCityNm,:rsdncStCd,:rsdncZipCd,:rsdncCntyCd,:mbrSsn,:sbscrbrInd,:tbacoUserInd,:totlPremAmt,:totlPremEfctvDt,:totlPremEndDt,:totlRspnsblyAmt,:premDueAmt,:hix834CreatnDt,:cnclDt,:dthDt,:totlMbrRspnsblyStrtDt,:totlMbrRspnsblyEndDt,:othrPaymntAmt,:othrPaymntAmtStrtDt,:othrPaymntAmtEndDt,:jobCd,:exchngAsgndTrnsctnId,:fileNm,:groupTin,:insrncTypeCd)
+    recon-sftp-config:
+      username: t_ant_wlp_unitia76
+      #password: l7@Btq_BnK
+      host: efx.anthem.com
+      port: 22
+      efxDataMap:
+        nysohrcn:
+          - 
+            srcdir: /mnt/<envKey>/recon/output/
+            efxDir: /ISG_Raw_Files_one
+            fileType: INPT
+            fileNameRegex: NY.IN.HS.ISG*
+          - 
+            srcDir: /mnt/<envKey>/recon/output/
+            efxDir: /E3_Raw_Extracts
+            fileType: OUTPT
+            fileNameRegex: '*-RECON-*.txt'
+          - 
+            srcDir: /mnt/<envKey>/recon/output/
+            efxDir: /E3_Raw_Extracts
+            fileType: OUTPT
+            fileNameRegex: '*-RECON-*.xlsx'
+        ffmrcn:
+          - 
+            srcDir: /mnt/<envKey>/recon/output/
+            efxDir: /ISG_Raw_Files
+            fileType: INPT
+            fileNameRegex: FFM*.IN.HS.ISG*
+          - 
+            srcDir: /mnt/<envKey>/recon/output/
+            efxDir: /WEM_Raw_Extracts
+            fileType: OUTPT
+            fileNameRegex: '*.RCR.RCNI*.*.P.IN'
+          - 
+            srcDir: /mnt/<envKey>/recon/output/
+            efxDir: /CMS_Response_Files
+            fileType: OUTPT
+            fileNameRegex: 'FFM_Blank_Subscriber_*_Details_D*.xlsx FFM_Blank_Subscriber_Summary_D*.xlsx FFM_Blank_Benefit_End_Date_*_Details_D*.xlsx FFM_Blank_Financial_End_Date_Summary_D*.xlsx FFM_Blank_Member_*_Details_D*.xlsx FFM_Invalid_Mailing_Address_*_Details_D*.xlsx FFM_Invalid_Benefit_Effective_Date_*_Details_D*.xlsx FFM_Blank_Member_Summary_D*.xlsx FFM_Invalid_Mailing_Address_Summary_D*.xlsx FFM_Invalid_Benefit_Effective_Date_Summary_D*.xlsx FFM_Invalid_Financial_Start_Date_Summary_D*.xlsx FFM_Invalid_Financial_Start_Date_*_Details_D*.xlsx FFM_Report_Financial_End_Date_Summary_D*.xlsx FFM_Report_Financial_End_Date_*_Details_D*.xlsx FFM_Balnk_Benefit_End_Date_Summary_D*.xlsx FFM_Blank_Financial_End_Date_*_Details_D*.xlsx FFM_RCNI_Record_Count*'
+          - 
+            srcDir: /mnt/<envKey>/recon/output/
+            efxDir: /Excel
+            fileType: OUTPT
+            fileNameRegex: '*.RCR.RCNI*.*.P.IN.xlsx'
+        coindrcn:
+          - 
+            srcDir: /mnt/<envKey>/recon/output/
+            efxDir: /CO_ISG_Raw_File
+            fileType: INPT
+            fileNameRegex: CO.IN.SS.ISG* CO.IN.HS.ISG*
+          - 
+            srcDir: /mnt/<envKey>/recon/output/
+            efxDir: /CO_new
+            fileType: OUTPT
+            fileNameRegex: '*_EDBL.txt'
+          - 
+            srcDir: /mnt/<envKey>/recon/output/
+            efxDir: /CO_new
+            fileType: OUTPT
+            fileNameRegex: '*_EDBL.xlsx'
+        cmsresp:
+          - 
+            srcDir: /mnt/<envKey>/recon/output/
+            efxDir: /Excel
+            fileType: OUTPT
+            fileNameRegex: 'FFM_DiscrepancySummaryReport_D*.xlsx FFM*Fieldlevel_Summary_D*.xlsx FFM_LastName_Mismatch_Compare_Details_D*.xlsx FFM_File_Count_Balance_Report_D*.xlsx FFM_Row_Level_FLag_Summary_D*.xlsx FFM_Financial_Amount_Summary_D*.xlsx *RCNO_ROW_N_FIELD_UANDI*.xlsx'
+          - 
+            srcDir: /mnt/<envKey>/recon/output/
+            efxDir: /Excel
+            fileType: OUTPT
+            fileNameRegex: '*.*RCNO*.*.*.OUT.xlsx'
+        ctshpdenrcn:
+          - 
+            srcDir: /mnt/<envKey>/recon/input/ct/
+            efxDir: /CT_SHOP_RECON
+            fileType: INPT
+            fileNameRegex: AHCT-S.SNDHIX*
+          - 
+            srcDir: /mnt/<envKey>/recon/output/
+            efxDir: /CT_SHOP_RECON
+            fileType: INPT
+            fileNameRegex: CT.SG.SS.ISG*
+          - 
+            srcDir: /mnt/<envKey>/recon/output/
+            efxDir: /CT_SHOP_RECON
+            fileType: OUTPT
+            fileNameRegex: 'CT_Discrepancy_Summary_Report_D*.xlsx CT_Discrepancy_Code_Detail_Code_D*.xlsx CT_Match_Summary_Report_D*.xlsx CT_Discrepancy_Report_D*.xlsx CT_MatchingData_Report_D*.xlsx CT_*_TableDump*.xlsx'
+        ctshpmedrcn:
+          - 
+            srcDir: /mnt/<envKey>/recon/input/ct/
+            efxDir: /CT_SHOP_RECON
+            fileType: INPT
+            fileNameRegex: AHCT-S.SNDHIX*
+          - 
+            srcDir: /mnt/<envKey>/recon/output/
+            efxDir: /CT_SHOP_RECON
+            fileType: INPT
+            fileNameRegex: CT.SG.SS.ISG*
+          - 
+            srcDir: /mnt/<envKey>/recon/output/
+            efxDir: /CT_SHOP_RECON
+            fileType: OUTPT
+            fileNameRegex: 'CT_Discrepancy_Summary_Report_D*.xlsx CT_Discrepancy_Code_Detail_Code_D*.xlsx CT_Match_Summary_Report_D*.xlsx CT_Discrepancy_Report_D*.xlsx CT_MatchingData_Report_D*.xlsx CT_*_TableDump*.xlsx'

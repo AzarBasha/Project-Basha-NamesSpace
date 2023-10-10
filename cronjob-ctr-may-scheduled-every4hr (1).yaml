@@ -1,0 +1,205 @@
+﻿kind: CronJob
+apiVersion: batch/v1
+metadata:
+  name: ctr-may-scheduled-every4hr
+  namespace: cmm-uat
+  uid: 082f25aa-f458-4db7-afb0-262f716937a0
+  resourceVersion: '999797275'
+  generation: 20
+  creationTimestamp: '2022-09-27T14:10:36Z'
+  labels:
+    migration.openshift.io/migrated-by-migmigration: e1397e23-a7a8-4719-b7db-073b2f49f2e3
+    migration.openshift.io/migrated-by-migplan: c13e708d-706a-4dd6-9c76-09edd9127694
+    spring-cronjob-id: may-22-ctr
+    velero.io/backup-name: migration-2fc5e-initial-f5gtx
+    velero.io/restore-name: migration-2fc5e-final-vdscp
+  annotations:
+    openshift.io/backup-registry-hostname: 'image-registry.openshift-image-registry.svc:5000'
+    openshift.io/backup-server-version: '1.21'
+    openshift.io/restore-registry-hostname: 'image-registry.openshift-image-registry.svc:5000'
+    openshift.io/restore-server-version: '1.21'
+spec:
+  schedule: '30 2,6,11,14,18,22 * * *'
+  concurrencyPolicy: Forbid
+  suspend: false
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+    spec:
+      template:
+        metadata:
+          creationTimestamp: null
+          labels:
+            spring-cronjob-id: may-22-ctr
+        spec:
+          restartPolicy: Never
+          serviceAccountName: default
+          imagePullSecrets:
+            - name: scdf-sa-dockercfg-cmm
+            - name: scdf-sa-dockercfg-cmm
+          schedulerName: default-scheduler
+          terminationGracePeriodSeconds: 30
+          securityContext: {}
+          containers:
+            - name: may-22-ctr
+              image: >-
+                image-registry.openshift-image-registry.svc:5000/cmm-uat/cmm-cpp-system-composedtaskrunner-j11:latest
+              env:
+                - name: COMPOSED-TASK-PROPERTIES
+                  value: >-
+                    app.may-22-ctr-ediwcfload-app.app.ediwcfload-app.transactionIsolationLevel=ISOLATION_DEFAULT,
+                    deployer.may-22-ctr-ediwcfload-app.deployer.ediwcfload-app.kubernetes.volumes=[{name:
+                    cmmreleasesitpv1, persistentVolumeClaim: { claimName: ie3np2
+                    }},{name: cmmreleasesitpv2, persistentVolumeClaim: {
+                    claimName: cmmnp2}}],
+                    deployer.may-22-ctr-ediwcfload-app.deployer.ediwcfload-app.kubernetes.imagePullPolicy=Always,
+                    deployer.may-22-ctr-ediwcfload-app.deployer.ediwcfload-app.kubernetes.environmentVariables=TZ=EST,
+                    deployer.may-22-ctr-ediwcfload-app.deployer.ediwcfload-app.kubernetes.volumeMounts=[{name:
+                    'cmmreleasesitpv1', mountPath: '/mnt'},{name:
+                    'cmmreleasesitpv2', mountPath: '/cmm'} ],
+                    deployer.may-22-ctr-ta1999-app.deployer.ta1999-app.kubernetes.environmentVariables=TZ=EST,
+                    deployer.may-22-ctr-ta1999-app.deployer.ta1999-app.kubernetes.imagePullPolicy=Always,
+                    deployer.may-22-ctr-ta1999-app.deployer.ta1999-app.kubernetes.volumes=[{name:
+                    cmmreleasesitpv1, persistentVolumeClaim: { claimName:
+                    ie3np2}}],
+                    deployer.may-22-ctr-ta1999-app.deployer.ta1999-app.kubernetes.volumeMounts=[{name:
+                    'cmmreleasesitpv1', mountPath: '/mnt'}],
+                    deployer.may-22-ctr-grpxmlload-app.deployer.grpxmlload-app.kubernetes.volumes=[{name:
+                    cmmreleasesitpv1, persistentVolumeClaim: { claimName:
+                    ie3np2}}],
+                    deployer.may-22-ctr-grpxmlload-app.deployer.grpxmlload-app.kubernetes.imagePullPolicy=Always,
+                    deployer.may-22-ctr-grpxmlload-app.deployer.grpxmlload-app.kubernetes.volumeMounts=[{name:
+                    'cmmreleasesitpv1', mountPath: '/mnt'}],
+                    deployer.may-22-ctr-sga-app.deployer.sga-app.kubernetes.volumeMounts=[{name:
+                    'cmmreleasesitpv1', mountPath: '/mnt'}],
+                    deployer.may-22-ctr-sga-app.deployer.sga-app.kubernetes.volumes=[{name:
+                    cmmreleasesitpv1, persistentVolumeClaim: { claimName:
+                    ie3np2}}],
+                    deployer.may-22-ctr-sga-app.deployer.sga-app.kubernetes.imagePullPolicy=Always,
+                    deployer.may-22-ctr-tsdl-app.deployer.tsdl-app.kubernetes.imagePullPolicy=Always,
+                    deployer.may-22-ctr-tsdl-app.deployer.tsdl-app.kubernetes.volumes=[{name:
+                    cmmreleasesitpv1, persistentVolumeClaim: { claimName:
+                    ie3np2}}],
+                    deployer.may-22-ctr-tsdl-app.deployer.tsdl-app.kubernetes.volumeMounts=[{name:
+                    'cmmreleasesitpv1', mountPath: '/mnt'}],
+                    deployer.may-22-ctr-snc-app.deployer.snc-app.kubernetes.imagePullPolicy=Always,
+                    deployer.may-22-ctr-snc-app.deployer.snc-app.kubernetes.volumes=[{name:
+                    cmmreleasesitpv1, persistentVolumeClaim: { claimName:
+                    ie3np2}}],
+                    deployer.may-22-ctr-snc-app.deployer.snc-app.kubernetes.volumeMounts=[{name:
+                    'cmmreleasesitpv1', mountPath: '/mnt'}],
+                    deployer.may-22-ctr-errdata-app.deployer.errdata-app.kubernetes.volumeMounts=[{name:
+                    'cmmreleasesitpv1', mountPath: '/mnt'}],
+                    deployer.may-22-ctr-errdata-app.deployer.errdata-app.kubernetes.imagePullPolicy=Always,
+                    deployer.may-22-ctr-errdata-app.deployer.errdata-app.kubernetes.volumes=[{name:
+                    cmmreleasesitpv1, persistentVolumeClaim: { claimName:
+                    ie3np2}}],
+                    deployer.may-22-ctr-sav-app.deployer.sav-app.kubernetes.imagePullPolicy=Always,
+                    deployer.may-22-ctr-sav-app.deployer.sav-app.kubernetes.volumes=[{name:
+                    cmmreleasesitpv1, persistentVolumeClaim: { claimName:
+                    ie3np2}}],
+                    deployer.may-22-ctr-sav-app.deployer.sav-app.kubernetes.volumeMounts=[{name:
+                    'cmmreleasesitpv1', mountPath: '/mnt'}],
+                    deployer.may-22-ctr-isg-app.deployer.isg-app.kubernetes.volumeMounts=[{name:
+                    'cmmreleasesitpv1', mountPath: '/mnt'}],
+                    deployer.may-22-ctr-isg-app.deployer.isg-app.kubernetes.environmentVariables=TZ=EST,
+                    deployer.may-22-ctr-isg-app.deployer.isg-app.kubernetes.volumes=[{name:
+                    cmmreleasesitpv1, persistentVolumeClaim: { claimName:
+                    ie3np2}}],
+                    deployer.may-22-ctr-isg-app.deployer.isg-app.kubernetes.imagePullPolicy=Always,
+                    deployer.may-22-ctr-tau-app.deployer.tau-app.kubernetes.imagePullPolicy=Always,
+                    deployer.may-22-ctr-tau-app.deployer.tau-app.kubernetes.volumes=[{name:
+                    cmmreleasesitpv1, persistentVolumeClaim: { claimName:
+                    ie3np2}}],
+                    deployer.may-22-ctr-tau-app.deployer.tau-app.kubernetes.volumeMounts=[{name:
+                    'cmmreleasesitpv1', mountPath: '/mnt'}],
+                    deployer.may-22-ctr-sav2-app.deployer.sav2-app.kubernetes.volumes=[{name:
+                    cmmreleasesitpv1, persistentVolumeClaim: { claimName:
+                    ie3np2}}],
+                    deployer.may-22-ctr-sav2-app.deployer.sav2-app.kubernetes.volumeMounts=[{name:
+                    'cmmreleasesitpv1', mountPath: '/mnt'}],
+                    deployer.may-22-ctr-sav2-app.deployer.sav2-app.kubernetes.imagePullPolicy=Always,
+                    deployer.may-22-ctr-premaint-app.deployer.premaint-app.kubernetes.imagePullPolicy=Always,
+                    deployer.may-22-ctr-premaint-app.deployer.premaint-app.kubernetes.volumeMounts=[{name:
+                    'cmmreleasesitpv1', mountPath: '/mnt'}],
+                    deployer.may-22-ctr-premaint-app.deployer.premaint-app.kubernetes.volumes=[{name:
+                    cmmreleasesitpv1, persistentVolumeClaim: { claimName:
+                    ie3np2}}],
+                    deployer.may-22-ctr-maintainance-app.deployer.maintainance-app.kubernetes.volumeMounts=[{name:
+                    'cmmreleasesitpv1', mountPath: '/mnt'}],
+                    deployer.may-22-ctr-maintainance-app.deployer.maintainance-app.kubernetes.volumes=[{name:
+                    cmmreleasesitpv1, persistentVolumeClaim: { claimName:
+                    ie3np2}}],
+                    deployer.may-22-ctr-maintainance-app.deployer.maintainance-app.kubernetes.imagePullPolicy=Always,
+                    deployer.may-22-ctr-ere-app.deployer.ere-app.kubernetes.volumeMounts=[{name:
+                    'cmmreleasesitpv1', mountPath: '/mnt'}],
+                    deployer.may-22-ctr-ere-app.deployer.ere-app.kubernetes.imagePullPolicy=Always,
+                    deployer.may-22-ctr-ere-app.deployer.ere-app.kubernetes.volumes=[{name:
+                    cmmreleasesitpv1, persistentVolumeClaim: { claimName:
+                    ie3np2}}],
+                    deployer.may-22-ctr-pmtload-app.deployer.pmtload-app.kubernetes.imagePullPolicy=Always,
+                    deployer.may-22-ctr-pmtload-app.deployer.pmtload-app.kubernetes.volumes=[{name:
+                    cmmreleasesitpv1, persistentVolumeClaim: { claimName: ie3np2
+                    }},{name: cmmreleasesitpv2, persistentVolumeClaim: {
+                    claimName: cmmnp2}}],
+                    deployer.may-22-ctr-pmtload-app.deployer.pmtload-app.kubernetes.volumeMounts=[{name:
+                    'cmmreleasesitpv1', mountPath: '/mnt'},{name:
+                    'cmmreleasesitpv2', mountPath: '/cmm'} ],
+                    deployer.may-22-ctr-pmmatching-app.deployer.pmmatching-app.kubernetes.imagePullPolicy=Always,
+                    deployer.may-22-ctr-pmmatching-app.deployer.pmmatching-app.kubernetes.volumeMounts=[{name:
+                    'cmmreleasesitpv1', mountPath: '/mnt'}],
+                    deployer.may-22-ctr-pmmatching-app.deployer.pmmatching-app.kubernetes.volumes=[{name:
+                    cmmreleasesitpv1, persistentVolumeClaim: { claimName:
+                    ie3np2}}],
+                    deployer.may-22-ctr-constructwcf-app.deployer.constructwcf-app.kubernetes.volumeMounts=[{name:
+                    'cmmreleasesitpv1', mountPath: '/mnt'}],
+                    deployer.may-22-ctr-constructwcf-app.deployer.constructwcf-app.kubernetes.imagePullPolicy=Always,
+                    deployer.may-22-ctr-constructwcf-app.deployer.constructwcf-app.kubernetes.volumes=[{name:
+                    cmmreleasesitpv1, persistentVolumeClaim: { claimName:
+                    ie3np2}}]
+                - name: GRAPH
+                  value: >-
+                    may-22-ctr-ediwcfload-app && may-22-ctr-ta1999-app &&
+                    may-22-ctr-grpxmlload-app && <may-22-ctr-sga-app ||
+                    may-22-ctr-tsdl-app && may-22-ctr-snc-app &&
+                    may-22-ctr-errdata-app && may-22-ctr-sav-app &&
+                    may-22-ctr-isg-app && may-22-ctr-tau-app &&
+                    may-22-ctr-sav2-app && may-22-ctr-premaint-app &&
+                    may-22-ctr-maintainance-app && may-22-ctr-ere-app &&
+                    may-22-ctr-pmtload-app && may-22-ctr-pmmatching-app &&
+                    may-22-ctr-constructwcf-app>
+                - name: MANAGEMENT_METRICS_TAGS_APPLICATION
+                  value: >-
+                    ${spring.cloud.task.name:unknown}-${spring.cloud.task.executionid:unknown}
+                - name: SPRING_DATASOURCE_URL
+                  value: 'jdbc:oracle:thin:@dc04dx22-scan1.internal.das:1525/CMMENRL2T'
+                - name: DATAFLOWSERVERURI
+                  value: 'http://10.91.131.69:9393'
+                - name: SPRING_DATASOURCE_PASSWORD
+                  value: 'E3core2t#123'
+                - name: MANAGEMENT_METRICS_TAGS_SERVICE
+                  value: task-application
+                - name: SPRING_DATASOURCE_USERNAME
+                  value: E3CORE
+                - name: SPRING_DATASOURCE_DRIVERCLASSNAME
+                  value: oracle.jdbc.driver.OracleDriver
+                - name: SPRING_CLOUD_TASK_NAME
+                  value: may-22-ctr
+                - name: SPRING_CLOUD_TASK_CLOSECONTEXT-ENABLED
+                  value: 'true'
+                - name: SPRING_CLOUD_APPLICATION_GUID
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: metadata.uid
+              resources: {}
+              terminationMessagePath: /dev/termination-log
+              terminationMessagePolicy: File
+              imagePullPolicy: IfNotPresent
+          serviceAccount: default
+          dnsPolicy: ClusterFirst
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+status:
+  lastScheduleTime: '2023-10-10T14:30:00Z'
+  lastSuccessfulTime: '2023-10-10T14:45:59Z'

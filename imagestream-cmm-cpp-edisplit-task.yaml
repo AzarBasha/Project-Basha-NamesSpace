@@ -1,0 +1,76 @@
+﻿kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: cmm-cpp-edisplit-task
+  namespace: cmm-uat
+  uid: ad3b084e-c0cc-4132-bfe0-90a5fd79c8f7
+  resourceVersion: '737795877'
+  generation: 28
+  creationTimestamp: '2022-09-27T14:10:40Z'
+  annotations:
+    openshift.io/image.dockerRepositoryCheck: '2023-07-04T00:00:11Z'
+spec:
+  lookupPolicy:
+    local: false
+  tags:
+    - name: rel-uat
+      annotations: null
+      from:
+        kind: DockerImage
+        name: >-
+          quay.apps.lz-np2.ent-ocp4-useast1.aws.internal.das/cmmnonprod/cmm-cpp-edisplit-task:rel-uat
+      generation: 27
+      importPolicy:
+        importMode: Legacy
+      referencePolicy:
+        type: Source
+    - name: rel-uat2
+      annotations: null
+      from:
+        kind: DockerImage
+        name: >-
+          quay.apps.np2.ent-ocp4-np2-useast1.aws.internal.das/cmmnonprod/cmm-cpp-edisplit-task:rel-uat2
+      generation: 28
+      importPolicy:
+        importMode: Legacy
+      referencePolicy:
+        type: Source
+status:
+  dockerImageRepository: >-
+    image-registry.openshift-image-registry.svc:5000/cmm-uat/cmm-cpp-edisplit-task
+  tags:
+    - tag: rel-uat
+      items:
+        - created: '2023-07-03T09:15:57Z'
+          dockerImageReference: >-
+            quay.apps.lz-np2.ent-ocp4-useast1.aws.internal.das/cmmnonprod/cmm-cpp-edisplit-task@sha256:f46fcffe3ab969a85d6c771892bc779fb491728482ff87191a8f4e00b1a461b4
+          image: >-
+            sha256:f46fcffe3ab969a85d6c771892bc779fb491728482ff87191a8f4e00b1a461b4
+          generation: 27
+        - created: '2023-04-24T11:46:27Z'
+          dockerImageReference: >-
+            quay.apps.lz-np2.ent-ocp4-useast1.aws.internal.das/cmmnonprod/cmm-cpp-edisplit-task@sha256:84ee1a68ebf6322ae2f8955f3c3083f2ecd3af1f1fee03dd7f53b7a4eecb0cd6
+          image: >-
+            sha256:84ee1a68ebf6322ae2f8955f3c3083f2ecd3af1f1fee03dd7f53b7a4eecb0cd6
+          generation: 24
+        - created: '2023-04-07T19:00:46Z'
+          dockerImageReference: >-
+            quay.apps.lz-np2.ent-ocp4-useast1.aws.internal.das/cmmnonprod/cmm-cpp-edisplit-task@sha256:db9be8722718ef68226d0967af9cd75aa541576a663318d5d2a2a2d4e13dab04
+          image: >-
+            sha256:db9be8722718ef68226d0967af9cd75aa541576a663318d5d2a2a2d4e13dab04
+          generation: 21
+    - tag: rel-uat2
+      items: null
+      conditions:
+        - type: ImportSuccess
+          status: 'False'
+          lastTransitionTime: '2023-07-04T00:00:11Z'
+          reason: InternalError
+          message: >-
+            Internal error occurred:
+            quay.apps.np2.ent-ocp4-np2-useast1.aws.internal.das/cmmnonprod/cmm-cpp-edisplit-task:rel-uat2:
+            Get
+            "https://quay.apps.np2.ent-ocp4-np2-useast1.aws.internal.das/v2/":
+            dial tcp: lookup quay.apps.np2.ent-ocp4-np2-useast1.aws.internal.das
+            on 10.90.0.10:53: no such host
+          generation: 28

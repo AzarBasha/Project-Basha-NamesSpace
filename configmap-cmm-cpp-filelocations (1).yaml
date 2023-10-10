@@ -1,0 +1,636 @@
+﻿kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cmm-cpp-filelocations
+  namespace: cmm-uat
+  uid: e26a5ca4-eb07-47ad-89bf-4367a2f9333e
+  resourceVersion: '849735450'
+  creationTimestamp: '2022-09-27T14:09:00Z'
+  labels:
+    app.kubernetes.io/instance: cmm-uat
+    velero.io/backup-name: migration-2fc5e-initial-f5gtx
+    velero.io/restore-name: migration-2fc5e-final-vdscp
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"v1","data":{"application.yaml":"# cmm-cpp-edisplit-task 
+      File Path Locations\n\nedisplit:\n  namePrefix: SNDHIX\n  in834:
+      /mnt/\u003cenvKey\u003e/edi834/inbound834/\n  split834:
+      /mnt/\u003cenvKey\u003e/edi834/split834/\n  temp834:
+      /mnt/\u003cenvKey\u003e/EDI-GW/834/input/\n  recon834:
+      /mnt/\u003cenvKey\u003e/recon/input/\n  gwHeaderFilePath:
+      /wsapps/INTGE3/EDI-GW/834/headers/\n  generateHeaderFile: false\n  header:
+      /mnt/\u003cenvKey\u003e/edi834/headers/ediHeaders/\n  gwIn:
+      /usr5/intge300/pot/\n  gwOut: /usr5/intge300/claimsin/\n\n#
+      cmm-cpp-ediwcfload-task File Path Locations   \nediwcfload:\n  nfsIn:
+      /cmm/\u003cenvKey\u003e/EDI-CH/inbound/\n  nfsArc:
+      /mnt/\u003cenvKey\u003e/edi834/inboundCHFile/\n  wcfSuffix: HIX_WCF\n 
+      errorSuffix: HIX_REJ_X12\n  isEmailEnabled: true\n  pstNfsIn:
+      /mnt/\u003cenvKey\u003e/edi834/outbound/postback/\n  pstNfsArc:
+      /mnt/\u003cenvKey\u003e/edi834/outbound/postback/archive/\n  outPstPath:
+      /serviceacct/srcech/srcapie3/\n  enrlThreadCount: 100\n  threadCount:
+      10\n\n# cmm-cpp-ta1999-task  File Path Locations\nta1999:\n 
+      filePaths:\n    gwIn: /usr5/intge300/reports/\n    nfsArcIn:
+      /mnt/\u003cenvKey\u003e/edi834/report/input/\n    gwOutput:
+      /wsapps/INTGE3/EDI-GW/reports/output/\n    nfsOutputTemp:
+      /mnt/\u003cenvKey\u003e/EDI-GW/reports/output/\n    nfsArcOut:
+      /mnt/\u003cenvKey\u003e/edi834/report/output/\n    nfsHold:
+      /mnt/\u003cenvKey\u003e/EDI-GW/reports/hold/\n    tempIn:
+      /mnt/\u003cenvKey\u003e/EDI-GW/reports/tempInput/\n    nfsArcHold:
+      /mnt/\u003cenvKey\u003e/edi834/report/hold-archive/ \n    nfsouthold:
+      /mnt/\u003cenvKey\u003e/edi834/report/outfileshold/\n\n#
+      cmm-cpp-grpxmlload-task File Path Locations\n#grpxml:\n#  namePrefix:
+      SNDHIX\n#  nfsIn:
+      file:/cmm/\u003cenvKey\u003e/EDI-GW/GroupXML/input/SNDHIXT_*   \n# 
+      nfsArc: /mnt/\u003cenvKey\u003e/GROUPXML/archive\n#  nfsXmlIn:
+      /cmm/\u003cenvKey\u003e/EDI-GW/GroupXML/input\n#  nfsReport:
+      /mnt/\u003cenvKey\u003e/EDI-GW/GroupXML/reports\n#  gwIn:
+      /wsapps/INTGE3/EDI-GW/GroupXML/input/\n\n#cmm-cpp-exchxmlroute-task File
+      Path Locations\nexchXmlRoute:\n  nfsIn:
+      file:/mnt/\u003cenvKey\u003e/EDI-GW/GroupXML/input/SNDHIXT_*\n  nfsArc:
+      /mnt/\u003cenvKey\u003e/GROUPXML/archive\n  nfsKyArc:
+      /mnt/\u003cenvKey\u003e/GROUPXML/archive/KY/\n  nfsXmlIn:
+      /mnt/\u003cenvKey\u003e/EDI-GW/GroupXML/input\n  headerFilePath:
+      /mnt/\u003cenvKey\u003e/edi834/headers/grpHeaders\n  headersOut:
+      /usr5/intge300/claimsin/\n  nfsProcessing:
+      /mnt/\u003cenvKey\u003e/GROUPXML/processing          \n  report:\n   
+      path: /mnt/\u003cenvKey\u003e/GROUPXML/kyFailedReport\n\n#
+      cmm-cpp-itext-task File Path Locations\nitext:\n  nfsOutPdf:
+      /mnt/\u003cenvKey\u003e/itextpdfjob/generated/\n\n# cmm-cpp-cfnp-task File
+      Path Locations\ncfnp:\n  nfsCancel:
+      /mnt/\u003cenvKey\u003e/cancelNonPay/cancellationRpt/\n#
+      cmm-cpp-cfnppreview-task File Path Locations \ncfnpprvw:\n  nfsCancelPre:
+      /mnt/\u003cenvKey\u003e/cancelNonPay/cancelPreview/\n  nfsExclusion:
+      /mnt/\u003cenvKey\u003e/cancelNonPay/sysExclusionRpt/\n\n#
+      cmm-cpp-letterxmlgen-taskFile Path Locations\nletterxmlgen:\n  nfsOut:
+      /mnt/\u003cenvKey\u003e/ltrxmlgen/output/\n  efxOutbound:
+      /mnt/\u003cenvKey\u003e/ltrxmlgen/efxOutbound/\n  nfsArchOut:
+      /mnt/\u003cenvKey\u003e/ltrxmlgen/archive/\n  ftpOutPath:
+      /wsapps/INTGE3/lettersLinuxBox/\n  peCombinedLetterName:
+      EXRI.EXSTREAM.EXRPWEM1.CALWEM01.LTR(+1)\n  peDeclineLetterName:
+      EXRI.EXSTREAM.EXRPWEM2.CALWEM01.LTR(+1)\n  mediCaidLetterName:
+      Empty.txt\n  efxOutboundforEmpty:
+      /mnt/\u003cenvKey\u003e/ltrxmlgen/efxOutboundEmpty/\n  sftpHost:
+      efxuat.int.anthem.com\n  efxUserName: t_ant_wlp_erxit\n  #efxPassword:
+      6bMZ@8Rthz\n  efxUserNameforExpression: t_ant_wlp_hixprenrolmnt\n 
+      #efxPasswordforExpression: YFdLv\u0026$4tC7pwtpr\n  sftpExpressionHost:
+      efxuat.int.anthem.com\n  pipeDelimiter: '|'\n  headers:
+      DOC_ID,DOC_UNIQUE_ID,STATE,DCMNT_RQST_DT,DCMNT_LANG,RCPNT_ID,EXCHNG_IND,APLCNT_FRST_NM,APLCNT_MID_INIT_NM,APLCNT_LAST_NM,APLCNT_ADRS_LINE_1,APLCNT_ADRS_LINE_2,APLCNT_ADRS_CITY_NM,APLCNT_ADRS_ST_PRVNC_CD,APLCNT_ADRS_ZIP_CD,APLCNT_EMAIL_ADRS,APLCNT_ID,AMT_DUE,EFFCTV_DT,PRDCT_NM,CNCL_DT\n 
+      sftpPipeDelimtrHost: efxuat.int.anthem.com\n  efxUserNameforPipeDelimtr:
+      T_INT_TESTPREFPATH_P\n  efxPasswordforPipeDelimtr:
+      YOyIm*71dpVFohC%r7@GG05naA\n\n# cmm-cpp-pmtload-task File Path
+      Locations\npmtload:\n  nsfVentanexIn:
+      /mnt/\u003cenvKey\u003e/Payments/Ventanex/input\n  nsfOrccIn:
+      /mnt/\u003cenvKey\u003e/Payments/ORCC/input\n  gwOrccIn:
+      /wsapps/INTGE3/Payments/ORCC/input/\n  gwVentanexIn:
+      /wsapps/INTGE3/Payments/Ventanex/input/\n  ventanexInPath:
+      /cmm/\u003cenvKey\u003e/Payments/Ventanex/input\n  ventanexProcessPath:
+      /mnt/\u003cenvKey\u003e/Payments/Ventanex/processing\n  ventanexArchPath:
+      /mnt/\u003cenvKey\u003e/Payments/Ventanex/archive\n  ventanexRejPath:
+      /mnt/\u003cenvKey\u003e/Payments/Ventanex/rejected\n  orccInPath:
+      /cmm/\u003cenvKey\u003e/Payments/ORCC/input\n  orccProcessPath:
+      /mnt/\u003cenvKey\u003e/Payments/ORCC/processing\n  orccArchPath:
+      /mnt/\u003cenvKey\u003e/Payments/ORCC/archive\n  orccRejPath:
+      /mnt/\u003cenvKey\u003e/Payments/ORCC/rejected\n\n# cmm-cpp-postback-task
+      File Path Locations \npostback:\n  nsfIn:
+      /cmm/\u003cenvKey\u003e/ISG/Postback/input/\n  nsfArc:
+      /mnt/\u003cenvKey\u003e/ISG/postback/archive/\n  nfsChunk:
+      /mnt/\u003cenvKey\u003e/ISG/postback/input/chunk/\n  gwIn:
+      /wsapps/INTGE3/postback/processing/\n  jobName: postbackJob\n  gridSize:
+      5\n\n# cmm-cpp-constructwcf-task File Path Locations \nconstructwcf:\n 
+      nfsOut: /mnt/\u003cenvKey\u003e/isgwcf/outputfiles/ \n  nfsArc:
+      /mnt/\u003cenvKey\u003e/isgwcf/archive/\n  emptyFile:
+      /mnt/\u003cenvKey\u003e/isgwcf/empty/emptyfile.txt\n\n#
+      cmm-cpp-isgfeedload-task File Path Locations\nisgfeedload:\n  nfsIn:
+      /mnt/\u003cenvKey\u003e/ISG/Feedfile/input/\n  nfsSkipped:
+      /mnt/\u003cenvKey\u003e/ISG/Feedfile/skippedfiles/\n  nfsArchive:
+      /mnt/\u003cenvKey\u003e/ISG/Feedfile/archive/\n\n#
+      cmm-cpp-medicareload-task File Path Locations\nmedicareLoad:\n  nfsIn:
+      /mnt/\u003cenvKey\u003e/medicareLoadJob/inbound/\n  nfsArc:
+      /mnt/\u003cenvKey\u003e/medicareLoadJob/archive/\n\n#
+      cmm-cpp-effcancel-task File Path Locations\neffcancel:\n  nfsIn:
+      /mnt/\u003cenvKey\u003e/effcancel/\n  nfsArc:
+      /mnt/\u003cenvKey\u003e/effcancel/archives/\n  gwOut:
+      /serviceacct/srcech/srcapie3/\n  renewalActionList: M,N,A,P\n 
+      threadCount: 10\n\n# cmm-cpp-recon-task fiel path locations  \nrecon:\n 
+      NHSRC: /mnt/\u003cenvKey\u003e/recon/input/nh\n  NYSRC:
+      /mnt/\u003cenvKey\u003e/recon/input/ny\n  EXCELOUT:
+      /mnt/\u003cenvKey\u003e/recon/output\n  ISGSRC:
+      /mnt/\u003cenvKey\u003e/recon/input/isg\n  EXCHGARC:
+      /mnt/\u003cenvKey\u003e/recon/archive\n  ISGARC:
+      /mnt/\u003cenvKey\u003e/recon/archive\n  PIPEOUT:
+      /mnt/\u003cenvKey\u003e/recon/output\n  CASRC:
+      /mnt/\u003cenvKey\u003e/recon/input/ca\n  FFMSRC:
+      /mnt/\u003cenvKey\u003e/recon/input/ffm\n  KYSRC:
+      /mnt/\u003cenvKey\u003e/recon/input/ky\n  CTSRC:
+      /mnt/\u003cenvKey\u003e/recon/input/ct\n#cmm-cpp-effCanTerm -task file
+      path location\neffcanterm:\n  isEmailEnabled: true\n  threadCount: 1\n 
+      nvDenHiosid: 33670\n  nvHltHiosid: 60156\n  statesExclusionList: CO,VA\n 
+      filePaths:\n    nfsArcOut:
+      /mnt/\u003cenvKey\u003e/edi834/outbound/send834/archive/\n    #nfsHold:
+      /cmm/\u003cenvKey\u003e/edi834/outbound/834/\n    nfsHold:
+      /cmm/\u003cenvKey\u003e/EDI-CH/outbound/edi834/\n    nfsOutputTemp:
+      /mnt/\u003cenvKey\u003e/edi834/outbound/send834/\n    nfsGeneratedHold:
+      /mnt/\u003cenvKey\u003e/edi834/outbound/send834/hold/\n    nfsArcIn :
+      /mnt/\u003cenvKey\u003e/edi834/outbound/send834/InArchive/\n   
+      serverFlag: false\n    fileSenttoServer: true\n    gwOut:
+      /wsapps/INTGE3/EffecutaionPass2/\n  gwOutPaths:\n    CASBE:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr4/cahix01e/pot/\n    COC4HCO:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr3/cohix01e/pot/\n    COCO:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr3/cohix03e/pot/\n    CTSBE:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr3/cthix01e/pot/\n    NYE80519:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr4/nyhix01e/pot/\n    NYE44113:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr4/nyhix01e/pot/\n    NYE41046:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr4/nyhix01e/pot/\n    NV60156:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr6/nvhix01e/pot/\n    NV33670:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr2/nvhix02d/pot/\n    GAFFM:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/fehix01e/pot/\n    INFFM:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/output/usr8/fehix01e/pot/\n    KYFFM:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/fehix01e/pot/\n    MEFFM:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/fehix01e/pot/\n    MESBM:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr2/mehix01e/pot/\n    MESBE:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr2/mehix01e/pot/\n    MOFFM:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/fehix01e/pot/\n    NHFFM:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/fehix01e/pot/\n    NVFFM:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/fehix01e/pot/\n    OHFFM:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/fehix01e/pot/\n    VAFFM:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/fehix01e/pot/\n    WIFFM:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/fehix01e/pot/\n    KYSBE:
+      /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/kyhix01e/pot/\n#
+      cmm-cpp-exch-ack-task  File Path Locations\nexchack:\n  filePaths:\n   
+      gwIn: /usr5/intge300/ackFiles/\n    tempIn:
+      /mnt/\u003cenvKey\u003e/EDI-GW/834/input/\n    nfsArcIn:
+      /mnt/\u003cenvKey\u003e/edi834/outboundFile/ackFiles/archive/combined/\n   
+      nfsArcSplit:
+      /mnt/\u003cenvKey\u003e/edi834/outboundFile/ackFiles/archive/split/    \n#
+      unmatched payments\nunmatchedpayments:\n  outbound:
+      /mnt/\u003cenvKey\u003e/reports/unMatchedPymts/outbound/\n# amc status
+      report\namcstatus:\n  nsfArc:
+      /mnt/\u003cenvKey\u003e/reports/archive/amcstatus/\nagingReports:\n  path:
+      /mnt/\u003cenvKey\u003e/reports/aging/\n  templatePath:
+      /mnt/\u003cenvKey\u003e/reports/aging/template\nreports: \n  filePaths :
+      \n    nfsIn : /wsapps/INTGE3/reports/paymentmetrics/\n    nfsArch :
+      /mnt/\u003cenvKey\u003e/reports/archive/paymentmetrics/\ncaResendReport:\n 
+      filePath:
+      /mnt/\u003cenvKey\u003e/reports/caresend/outbound/\nxwalkReport:\n 
+      filePath: /mnt/\u003cenvKey\u003e/reports/xwalk/outbound/\n  outbound:
+      /mnt/\u003cenvKey\u003e/reports/xwalk/outbound/\n  efxOutbound:
+      /mnt/\u003cenvKey\u003e/reports/xwalk/efxOutbound/\n  sftpHost:
+      efxuat.int.anthem.com\n  efxUserName: t_ant_wlp_unuaprf67\n  #efxPassword:
+      TBfR7uQ@Hm\npassivehold:\n  nfsOut:
+      /mnt/\u003cenvKey\u003e/reports/passiveHold/outbound/\nmradue:\n  nfsOut:
+      /mnt/\u003cenvKey\u003e/reports/mradue/outbound/\n  nfsArch:
+      /mnt/\u003cenvKey\u003e/reports/archive/mradue/\nnotProcessed:\n 
+      filePath:
+      /mnt/\u003cenvKey\u003e/reports/notprocessed/outbound/\npassiveNoLonger:\n 
+      nfsOut:
+      /mnt/\u003cenvKey\u003e/reports/passiveNoLongerActive/outbound/\ntnrl:\n 
+      filePath: /mnt/\u003cenvKey\u003e/reports/tnrl/outbound/\nnhovrlap:\n 
+      nfsOut:
+      /mnt/\u003cenvKey\u003e/reports/nhoverlapping/outbound/\nbrokerAorReport:\n 
+      filePath:
+      /mnt/\u003cenvKey\u003e/reports/brokeraor/outbound/\npassiveAlreadyActiveReportJob:\n 
+      nfsOut:
+      /mnt/\u003cenvKey\u003e/reports/passiveAlreadyActive/outbound/\npaymentMetrics:\n 
+      filePath: /mnt/\u003cenvKey\u003e/reports/paymentmetrics/outbound/\n 
+      fileName: Payment_Metrics_Report\nappTrackerReport:\n  fileNameExtension:
+      .txt\n  path: /mnt/\u003cenvKey\u003e/reports/apptracker/outbound/\n 
+      fileName: WEM_TO_OLS_ENROLL\nrenewaldashboard:\n  template:
+      /mnt/\u003cenvKey\u003e/reports/renewaldashboard/template/\n  outbound:
+      /mnt/\u003cenvKey\u003e/reports/renewaldashboard/outbound/\nm834NoChangeReportJob:\n 
+      filePath: /mnt/\u003cenvKey\u003e/reports/m834nochng/outbound/\n  archive:
+      /mnt/\u003cenvKey\u003e/reports/archive/m834nochng/\nedierrorfileload:\n 
+      edierrorFilePath:
+      /mnt/\u003cenvKey\u003e/reports/edierrFileLoad/inbound/\n 
+      ediprocessingPath:
+      /mnt/\u003cenvKey\u003e/reports/edierrFileLoad/processing/\n 
+      prefixFileName: SNDHIXT\nbpmReport:\n  nfsOut:
+      /mnt/\u003cenvKey\u003e/reports/bpmreports/outbound/\n  nfsArch:
+      /mnt/\u003cenvKey\u003e/reports/archive/bpmreports/\n  efxpath:
+      /wsapps/INTGE3/reports/bpmreports/\n  template:
+      /mnt/\u003cenvKey\u003e/reports/bpmreports/template/\nguaranteedAvailReportJob:\n 
+      filePath: /mnt/\u003cenvKey\u003e/reports/guaranteedAvail/outbound/\n 
+      inputFilePath: /mnt/\u003cenvKey\u003e/reports/guaranteedAvail/inbound/\n 
+      outboundArchive:
+      /mnt/\u003cenvKey\u003e/reports/archive/guranteedavailabilityrpt/outbound/\n 
+      inBoundArchive:
+      /mnt/\u003cenvKey\u003e/reports/archive/guranteedavailabilityrpt/inbound/\nstatefarmfeed:\n 
+      efxpath: /wsapps/INTGE3/reports/statefarmfeed/\n  outbound:
+      /mnt/\u003cenvKey\u003e/reports/statefarmfeed/outbound/\n  archive:
+      /mnt/\u003cenvKey\u003e/reports/archive/statefarmfeed/\n  agent:\n   
+      inbound: /mnt/\u003cenvKey\u003e/reports/statefarmfeed/inbound/ascs/\n   
+      archive:
+      /mnt/\u003cenvKey\u003e/reports/archive/statefarmfeed/inbound/ascs/\n 
+      isg:\n    inbound:
+      /mnt/\u003cenvKey\u003e/reports/statefarmfeed/inbound/\n    archive:
+      /mnt/\u003cenvKey\u003e/reports/archive/statefarmfeed/inbound/\npaperpayment:\n 
+      outbound: /mnt/\u003cenvKey\u003e/reports/paperpaymentreport/outbound/\n 
+      archive: /mnt/\u003cenvKey\u003e/reports/archive/paperpaymentreport/\n 
+      efxpath: /wsapps/INTGE3/reports/paperpaymentreport/\noeHoldReport:\n 
+      filePath:
+      /mnt/\u003cenvKey\u003e/reports/oeHoldReport/outbound/\nffmReinstatementReport:\n 
+      filePath: /mnt/\u003cenvKey\u003e/reports/ffmreinstatement/outbound/\n 
+      efxpath: /wsapps/INTGE3/reports/ffmreinstatement/\n  archive:
+      /mnt/\u003cenvKey\u003e/reports/archive/ffmreinstatement/\nturnTimeReport:\n 
+      outputPath: /mnt/\u003cenvKey\u003e/reports/ttr/outbound/\n  templatePath:
+      /mnt/\u003cenvKey\u003e/reports/ttr/template/\n  inboundPath:
+      /mnt/\u003cenvKey\u003e/reports/ttr/inbound/\nagingInventoryDataReport:\n 
+      reportPath:
+      /mnt/\u003cenvKey\u003e/reports/aginginventorydatareport/outbound/\n 
+      archivePath:
+      /mnt/\u003cenvKey\u003e/reports/archive/aginginventorydatareport/outbound/\n 
+      reportName: Aging_Inventory_Data_Report\n  headerContent:
+      SOURCE,STATE_CODE,STATUS,QUEUE,CREATEDDATE,ENRLID,SSN,HCID,ACNID,EXCHSUBID,EXCHTRANSID,FIRSTNAME,LASTNAME,WLP_CONTRACT_CODE,PRODUCTTYPE,MEMBERRESPAMOUNT\n 
+      headerColLengths:
+      40,12,40,40,30,20,20,20,20,20,40,30,30,24,20,24\nisgWcfReport:\n  nfsOut:
+      /mnt/\u003cenvKey\u003e/reports/wcfreports/outbound/\n  template:
+      /mnt/\u003cenvKey\u003e/reports/wcfreports/template/\nexchangeErrorReport:\n 
+      inbound:\n    path:
+      /mnt/\u003cenvKey\u003e/reports/exchangeErrors/inbound/\n 
+      processing:\n    path:
+      /mnt/\u003cenvKey\u003e/reports/exchangeErrors/processing/CO/\n  efxpath:
+      /wsapps/INTGE3/reports/exchangeErrors/\n  archive:
+      /mnt/\u003cenvKey\u003e/reports/archive/exchangeErrors/\n  output:\n   
+      path:
+      /mnt/\u003cenvKey\u003e/reports/exchangeErrors/outbound/CO/level2/\n   
+      pathlevel0e3:
+      /mnt/\u003cenvKey\u003e/reports/exchangeErrors/outbound/CO/level0/e3/\n   
+      pathlevel0isg:
+      /mnt/\u003cenvKey\u003e/reports/exchangeErrors/outbound/CO/level0/isg/\n   
+      reportNameL2: src_rpt_name_L2_[yyyyMMdd_HHmm].xlsx\n    reportNameL0E3:
+      src_rpt_name_E3_L0_[yyyyMMdd_HHmm].xlsx\n    reportNameL0Isg:
+      src_rpt_name_ISG_L0_[yyyyMMdd_HHmm].xlsx\n  src:\n    sheetL2: 1\n   
+      sheetL0E3: 1\n    sheetL0Isg: 1\n    columnsL2: 1-33\n    columnsL0E3:
+      1-33\n    columnsL0Isg: 1-33\n    rulesL2: 19 EQUALSIGNORECASE
+      \"ERROR\"|18 EQUALSIGNORECASE \"Level 2\"\n    rulesL0E3: 19
+      EQUALSIGNORECASE \"ERROR\"|18 EQUALSIGNORECASE \"Level 0\"|6 LENGTHGREATER
+      5\n    rulesL0Isg: 19 EQUALSIGNORECASE \"ERROR\"|18 EQUALSIGNORECASE
+      \"Level 0\"|6 LENGTHLESSEQUAL 5\n    sheetnameL2: CO Level 2\n   
+      sheetnameL0E3: CO Level 0 - E3\n    sheetnameL0Isg: CO Level 0 -
+      ISG\nisgPbError :\n  reportPath :
+      /mnt/\u003cenvKey\u003e/reports/isgpberror/outbound/\nhecntive:\n 
+      filePath: /mnt/\u003cenvKey\u003e/reports/hcentive/outbound/\n 
+      nfsOutArchivePath:
+      /mnt/\u003cenvKey\u003e/reports/archive/hcentive/outbound/"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"cmm-uat"},"name":"cmm-cpp-filelocations","namespace":"cmm-uat"}}
+  managedFields:
+    - manager: velero-server
+      operation: Update
+      apiVersion: v1
+      time: '2022-09-27T14:09:00Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data': {}
+        'f:metadata':
+          'f:annotations': {}
+          'f:labels':
+            .: {}
+            'f:app.kubernetes.io/instance': {}
+            'f:velero.io/backup-name': {}
+            'f:velero.io/restore-name': {}
+    - manager: argocd-application-controller
+      operation: Update
+      apiVersion: v1
+      time: '2022-10-20T07:55:04Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          'f:application.yaml': {}
+        'f:metadata':
+          'f:annotations':
+            'f:kubectl.kubernetes.io/last-applied-configuration': {}
+data:
+  application.yaml: |-
+    # cmm-cpp-edisplit-task  File Path Locations
+
+    edisplit:
+      namePrefix: SNDHIX
+      in834: /mnt/<envKey>/edi834/inbound834/
+      split834: /mnt/<envKey>/edi834/split834/
+      temp834: /mnt/<envKey>/EDI-GW/834/input/
+      recon834: /mnt/<envKey>/recon/input/
+      gwHeaderFilePath: /wsapps/INTGE3/EDI-GW/834/headers/
+      generateHeaderFile: false
+      header: /mnt/<envKey>/edi834/headers/ediHeaders/
+      gwIn: /usr5/intge300/pot/
+      gwOut: /usr5/intge300/claimsin/
+
+    # cmm-cpp-ediwcfload-task File Path Locations   
+    ediwcfload:
+      nfsIn: /cmm/<envKey>/EDI-CH/inbound/
+      nfsArc: /mnt/<envKey>/edi834/inboundCHFile/
+      wcfSuffix: HIX_WCF
+      errorSuffix: HIX_REJ_X12
+      isEmailEnabled: true
+      pstNfsIn: /mnt/<envKey>/edi834/outbound/postback/
+      pstNfsArc: /mnt/<envKey>/edi834/outbound/postback/archive/
+      outPstPath: /serviceacct/srcech/srcapie3/
+      enrlThreadCount: 100
+      threadCount: 10
+
+    # cmm-cpp-ta1999-task  File Path Locations
+    ta1999:
+      filePaths:
+        gwIn: /usr5/intge300/reports/
+        nfsArcIn: /mnt/<envKey>/edi834/report/input/
+        gwOutput: /wsapps/INTGE3/EDI-GW/reports/output/
+        nfsOutputTemp: /mnt/<envKey>/EDI-GW/reports/output/
+        nfsArcOut: /mnt/<envKey>/edi834/report/output/
+        nfsHold: /mnt/<envKey>/EDI-GW/reports/hold/
+        tempIn: /mnt/<envKey>/EDI-GW/reports/tempInput/
+        nfsArcHold: /mnt/<envKey>/edi834/report/hold-archive/ 
+        nfsouthold: /mnt/<envKey>/edi834/report/outfileshold/
+
+    # cmm-cpp-grpxmlload-task File Path Locations
+    #grpxml:
+    #  namePrefix: SNDHIX
+    #  nfsIn: file:/cmm/<envKey>/EDI-GW/GroupXML/input/SNDHIXT_*   
+    #  nfsArc: /mnt/<envKey>/GROUPXML/archive
+    #  nfsXmlIn: /cmm/<envKey>/EDI-GW/GroupXML/input
+    #  nfsReport: /mnt/<envKey>/EDI-GW/GroupXML/reports
+    #  gwIn: /wsapps/INTGE3/EDI-GW/GroupXML/input/
+
+    #cmm-cpp-exchxmlroute-task File Path Locations
+    exchXmlRoute:
+      nfsIn: file:/mnt/<envKey>/EDI-GW/GroupXML/input/SNDHIXT_*
+      nfsArc: /mnt/<envKey>/GROUPXML/archive
+      nfsKyArc: /mnt/<envKey>/GROUPXML/archive/KY/
+      nfsXmlIn: /mnt/<envKey>/EDI-GW/GroupXML/input
+      headerFilePath: /mnt/<envKey>/edi834/headers/grpHeaders
+      headersOut: /usr5/intge300/claimsin/
+      nfsProcessing: /mnt/<envKey>/GROUPXML/processing          
+      report:
+        path: /mnt/<envKey>/GROUPXML/kyFailedReport
+
+    # cmm-cpp-itext-task File Path Locations
+    itext:
+      nfsOutPdf: /mnt/<envKey>/itextpdfjob/generated/
+
+    # cmm-cpp-cfnp-task File Path Locations
+    cfnp:
+      nfsCancel: /mnt/<envKey>/cancelNonPay/cancellationRpt/
+    # cmm-cpp-cfnppreview-task File Path Locations 
+    cfnpprvw:
+      nfsCancelPre: /mnt/<envKey>/cancelNonPay/cancelPreview/
+      nfsExclusion: /mnt/<envKey>/cancelNonPay/sysExclusionRpt/
+
+    # cmm-cpp-letterxmlgen-taskFile Path Locations
+    letterxmlgen:
+      nfsOut: /mnt/<envKey>/ltrxmlgen/output/
+      efxOutbound: /mnt/<envKey>/ltrxmlgen/efxOutbound/
+      nfsArchOut: /mnt/<envKey>/ltrxmlgen/archive/
+      ftpOutPath: /wsapps/INTGE3/lettersLinuxBox/
+      peCombinedLetterName: EXRI.EXSTREAM.EXRPWEM1.CALWEM01.LTR(+1)
+      peDeclineLetterName: EXRI.EXSTREAM.EXRPWEM2.CALWEM01.LTR(+1)
+      mediCaidLetterName: Empty.txt
+      efxOutboundforEmpty: /mnt/<envKey>/ltrxmlgen/efxOutboundEmpty/
+      sftpHost: efxuat.int.anthem.com
+      efxUserName: t_ant_wlp_erxit
+      #efxPassword: 6bMZ@8Rthz
+      efxUserNameforExpression: t_ant_wlp_hixprenrolmnt
+      #efxPasswordforExpression: YFdLv&$4tC7pwtpr
+      sftpExpressionHost: efxuat.int.anthem.com
+      pipeDelimiter: '|'
+      headers: DOC_ID,DOC_UNIQUE_ID,STATE,DCMNT_RQST_DT,DCMNT_LANG,RCPNT_ID,EXCHNG_IND,APLCNT_FRST_NM,APLCNT_MID_INIT_NM,APLCNT_LAST_NM,APLCNT_ADRS_LINE_1,APLCNT_ADRS_LINE_2,APLCNT_ADRS_CITY_NM,APLCNT_ADRS_ST_PRVNC_CD,APLCNT_ADRS_ZIP_CD,APLCNT_EMAIL_ADRS,APLCNT_ID,AMT_DUE,EFFCTV_DT,PRDCT_NM,CNCL_DT
+      sftpPipeDelimtrHost: efxuat.int.anthem.com
+      efxUserNameforPipeDelimtr: T_INT_TESTPREFPATH_P
+      efxPasswordforPipeDelimtr: YOyIm*71dpVFohC%r7@GG05naA
+
+    # cmm-cpp-pmtload-task File Path Locations
+    pmtload:
+      nsfVentanexIn: /mnt/<envKey>/Payments/Ventanex/input
+      nsfOrccIn: /mnt/<envKey>/Payments/ORCC/input
+      gwOrccIn: /wsapps/INTGE3/Payments/ORCC/input/
+      gwVentanexIn: /wsapps/INTGE3/Payments/Ventanex/input/
+      ventanexInPath: /cmm/<envKey>/Payments/Ventanex/input
+      ventanexProcessPath: /mnt/<envKey>/Payments/Ventanex/processing
+      ventanexArchPath: /mnt/<envKey>/Payments/Ventanex/archive
+      ventanexRejPath: /mnt/<envKey>/Payments/Ventanex/rejected
+      orccInPath: /cmm/<envKey>/Payments/ORCC/input
+      orccProcessPath: /mnt/<envKey>/Payments/ORCC/processing
+      orccArchPath: /mnt/<envKey>/Payments/ORCC/archive
+      orccRejPath: /mnt/<envKey>/Payments/ORCC/rejected
+
+    # cmm-cpp-postback-task File Path Locations 
+    postback:
+      nsfIn: /cmm/<envKey>/ISG/Postback/input/
+      nsfArc: /mnt/<envKey>/ISG/postback/archive/
+      nfsChunk: /mnt/<envKey>/ISG/postback/input/chunk/
+      gwIn: /wsapps/INTGE3/postback/processing/
+      jobName: postbackJob
+      gridSize: 5
+
+    # cmm-cpp-constructwcf-task File Path Locations 
+    constructwcf:
+      nfsOut: /mnt/<envKey>/isgwcf/outputfiles/ 
+      nfsArc: /mnt/<envKey>/isgwcf/archive/
+      emptyFile: /mnt/<envKey>/isgwcf/empty/emptyfile.txt
+
+    # cmm-cpp-isgfeedload-task File Path Locations
+    isgfeedload:
+      nfsIn: /mnt/<envKey>/ISG/Feedfile/input/
+      nfsSkipped: /mnt/<envKey>/ISG/Feedfile/skippedfiles/
+      nfsArchive: /mnt/<envKey>/ISG/Feedfile/archive/
+
+    # cmm-cpp-medicareload-task File Path Locations
+    medicareLoad:
+      nfsIn: /mnt/<envKey>/medicareLoadJob/inbound/
+      nfsArc: /mnt/<envKey>/medicareLoadJob/archive/
+
+    # cmm-cpp-effcancel-task File Path Locations
+    effcancel:
+      nfsIn: /mnt/<envKey>/effcancel/
+      nfsArc: /mnt/<envKey>/effcancel/archives/
+      gwOut: /serviceacct/srcech/srcapie3/
+      renewalActionList: M,N,A,P
+      threadCount: 10
+
+    # cmm-cpp-recon-task fiel path locations  
+    recon:
+      NHSRC: /mnt/<envKey>/recon/input/nh
+      NYSRC: /mnt/<envKey>/recon/input/ny
+      EXCELOUT: /mnt/<envKey>/recon/output
+      ISGSRC: /mnt/<envKey>/recon/input/isg
+      EXCHGARC: /mnt/<envKey>/recon/archive
+      ISGARC: /mnt/<envKey>/recon/archive
+      PIPEOUT: /mnt/<envKey>/recon/output
+      CASRC: /mnt/<envKey>/recon/input/ca
+      FFMSRC: /mnt/<envKey>/recon/input/ffm
+      KYSRC: /mnt/<envKey>/recon/input/ky
+      CTSRC: /mnt/<envKey>/recon/input/ct
+    #cmm-cpp-effCanTerm -task file path location
+    effcanterm:
+      isEmailEnabled: true
+      threadCount: 1
+      nvDenHiosid: 33670
+      nvHltHiosid: 60156
+      statesExclusionList: CO,VA
+      filePaths:
+        nfsArcOut: /mnt/<envKey>/edi834/outbound/send834/archive/
+        #nfsHold: /cmm/<envKey>/edi834/outbound/834/
+        nfsHold: /cmm/<envKey>/EDI-CH/outbound/edi834/
+        nfsOutputTemp: /mnt/<envKey>/edi834/outbound/send834/
+        nfsGeneratedHold: /mnt/<envKey>/edi834/outbound/send834/hold/
+        nfsArcIn : /mnt/<envKey>/edi834/outbound/send834/InArchive/
+        serverFlag: false
+        fileSenttoServer: true
+        gwOut: /wsapps/INTGE3/EffecutaionPass2/
+      gwOutPaths:
+        CASBE: /ie3/wsapps/INTGE3/EffecutaionPass2/usr4/cahix01e/pot/
+        COC4HCO: /ie3/wsapps/INTGE3/EffecutaionPass2/usr3/cohix01e/pot/
+        COCO: /ie3/wsapps/INTGE3/EffecutaionPass2/usr3/cohix03e/pot/
+        CTSBE: /ie3/wsapps/INTGE3/EffecutaionPass2/usr3/cthix01e/pot/
+        NYE80519: /ie3/wsapps/INTGE3/EffecutaionPass2/usr4/nyhix01e/pot/
+        NYE44113: /ie3/wsapps/INTGE3/EffecutaionPass2/usr4/nyhix01e/pot/
+        NYE41046: /ie3/wsapps/INTGE3/EffecutaionPass2/usr4/nyhix01e/pot/
+        NV60156: /ie3/wsapps/INTGE3/EffecutaionPass2/usr6/nvhix01e/pot/
+        NV33670: /ie3/wsapps/INTGE3/EffecutaionPass2/usr2/nvhix02d/pot/
+        GAFFM: /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/fehix01e/pot/
+        INFFM: /ie3/wsapps/INTGE3/EffecutaionPass2/output/usr8/fehix01e/pot/
+        KYFFM: /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/fehix01e/pot/
+        MEFFM: /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/fehix01e/pot/
+        MESBM: /ie3/wsapps/INTGE3/EffecutaionPass2/usr2/mehix01e/pot/
+        MESBE: /ie3/wsapps/INTGE3/EffecutaionPass2/usr2/mehix01e/pot/
+        MOFFM: /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/fehix01e/pot/
+        NHFFM: /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/fehix01e/pot/
+        NVFFM: /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/fehix01e/pot/
+        OHFFM: /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/fehix01e/pot/
+        VAFFM: /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/fehix01e/pot/
+        WIFFM: /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/fehix01e/pot/
+        KYSBE: /ie3/wsapps/INTGE3/EffecutaionPass2/usr8/kyhix01e/pot/
+    # cmm-cpp-exch-ack-task  File Path Locations
+    exchack:
+      filePaths:
+        gwIn: /usr5/intge300/ackFiles/
+        tempIn: /mnt/<envKey>/EDI-GW/834/input/
+        nfsArcIn: /mnt/<envKey>/edi834/outboundFile/ackFiles/archive/combined/
+        nfsArcSplit: /mnt/<envKey>/edi834/outboundFile/ackFiles/archive/split/    
+    # unmatched payments
+    unmatchedpayments:
+      outbound: /mnt/<envKey>/reports/unMatchedPymts/outbound/
+    # amc status report
+    amcstatus:
+      nsfArc: /mnt/<envKey>/reports/archive/amcstatus/
+    agingReports:
+      path: /mnt/<envKey>/reports/aging/
+      templatePath: /mnt/<envKey>/reports/aging/template
+    reports: 
+      filePaths : 
+        nfsIn : /wsapps/INTGE3/reports/paymentmetrics/
+        nfsArch : /mnt/<envKey>/reports/archive/paymentmetrics/
+    caResendReport:
+      filePath: /mnt/<envKey>/reports/caresend/outbound/
+    xwalkReport:
+      filePath: /mnt/<envKey>/reports/xwalk/outbound/
+      outbound: /mnt/<envKey>/reports/xwalk/outbound/
+      efxOutbound: /mnt/<envKey>/reports/xwalk/efxOutbound/
+      sftpHost: efxuat.int.anthem.com
+      efxUserName: t_ant_wlp_unuaprf67
+      #efxPassword: TBfR7uQ@Hm
+    passivehold:
+      nfsOut: /mnt/<envKey>/reports/passiveHold/outbound/
+    mradue:
+      nfsOut: /mnt/<envKey>/reports/mradue/outbound/
+      nfsArch: /mnt/<envKey>/reports/archive/mradue/
+    notProcessed:
+      filePath: /mnt/<envKey>/reports/notprocessed/outbound/
+    passiveNoLonger:
+      nfsOut: /mnt/<envKey>/reports/passiveNoLongerActive/outbound/
+    tnrl:
+      filePath: /mnt/<envKey>/reports/tnrl/outbound/
+    nhovrlap:
+      nfsOut: /mnt/<envKey>/reports/nhoverlapping/outbound/
+    brokerAorReport:
+      filePath: /mnt/<envKey>/reports/brokeraor/outbound/
+    passiveAlreadyActiveReportJob:
+      nfsOut: /mnt/<envKey>/reports/passiveAlreadyActive/outbound/
+    paymentMetrics:
+      filePath: /mnt/<envKey>/reports/paymentmetrics/outbound/
+      fileName: Payment_Metrics_Report
+    appTrackerReport:
+      fileNameExtension: .txt
+      path: /mnt/<envKey>/reports/apptracker/outbound/
+      fileName: WEM_TO_OLS_ENROLL
+    renewaldashboard:
+      template: /mnt/<envKey>/reports/renewaldashboard/template/
+      outbound: /mnt/<envKey>/reports/renewaldashboard/outbound/
+    m834NoChangeReportJob:
+      filePath: /mnt/<envKey>/reports/m834nochng/outbound/
+      archive: /mnt/<envKey>/reports/archive/m834nochng/
+    edierrorfileload:
+      edierrorFilePath: /mnt/<envKey>/reports/edierrFileLoad/inbound/
+      ediprocessingPath: /mnt/<envKey>/reports/edierrFileLoad/processing/
+      prefixFileName: SNDHIXT
+    bpmReport:
+      nfsOut: /mnt/<envKey>/reports/bpmreports/outbound/
+      nfsArch: /mnt/<envKey>/reports/archive/bpmreports/
+      efxpath: /wsapps/INTGE3/reports/bpmreports/
+      template: /mnt/<envKey>/reports/bpmreports/template/
+    guaranteedAvailReportJob:
+      filePath: /mnt/<envKey>/reports/guaranteedAvail/outbound/
+      inputFilePath: /mnt/<envKey>/reports/guaranteedAvail/inbound/
+      outboundArchive: /mnt/<envKey>/reports/archive/guranteedavailabilityrpt/outbound/
+      inBoundArchive: /mnt/<envKey>/reports/archive/guranteedavailabilityrpt/inbound/
+    statefarmfeed:
+      efxpath: /wsapps/INTGE3/reports/statefarmfeed/
+      outbound: /mnt/<envKey>/reports/statefarmfeed/outbound/
+      archive: /mnt/<envKey>/reports/archive/statefarmfeed/
+      agent:
+        inbound: /mnt/<envKey>/reports/statefarmfeed/inbound/ascs/
+        archive: /mnt/<envKey>/reports/archive/statefarmfeed/inbound/ascs/
+      isg:
+        inbound: /mnt/<envKey>/reports/statefarmfeed/inbound/
+        archive: /mnt/<envKey>/reports/archive/statefarmfeed/inbound/
+    paperpayment:
+      outbound: /mnt/<envKey>/reports/paperpaymentreport/outbound/
+      archive: /mnt/<envKey>/reports/archive/paperpaymentreport/
+      efxpath: /wsapps/INTGE3/reports/paperpaymentreport/
+    oeHoldReport:
+      filePath: /mnt/<envKey>/reports/oeHoldReport/outbound/
+    ffmReinstatementReport:
+      filePath: /mnt/<envKey>/reports/ffmreinstatement/outbound/
+      efxpath: /wsapps/INTGE3/reports/ffmreinstatement/
+      archive: /mnt/<envKey>/reports/archive/ffmreinstatement/
+    turnTimeReport:
+      outputPath: /mnt/<envKey>/reports/ttr/outbound/
+      templatePath: /mnt/<envKey>/reports/ttr/template/
+      inboundPath: /mnt/<envKey>/reports/ttr/inbound/
+    agingInventoryDataReport:
+      reportPath: /mnt/<envKey>/reports/aginginventorydatareport/outbound/
+      archivePath: /mnt/<envKey>/reports/archive/aginginventorydatareport/outbound/
+      reportName: Aging_Inventory_Data_Report
+      headerContent: SOURCE,STATE_CODE,STATUS,QUEUE,CREATEDDATE,ENRLID,SSN,HCID,ACNID,EXCHSUBID,EXCHTRANSID,FIRSTNAME,LASTNAME,WLP_CONTRACT_CODE,PRODUCTTYPE,MEMBERRESPAMOUNT
+      headerColLengths: 40,12,40,40,30,20,20,20,20,20,40,30,30,24,20,24
+    isgWcfReport:
+      nfsOut: /mnt/<envKey>/reports/wcfreports/outbound/
+      template: /mnt/<envKey>/reports/wcfreports/template/
+    exchangeErrorReport:
+      inbound:
+        path: /mnt/<envKey>/reports/exchangeErrors/inbound/
+      processing:
+        path: /mnt/<envKey>/reports/exchangeErrors/processing/CO/
+      efxpath: /wsapps/INTGE3/reports/exchangeErrors/
+      archive: /mnt/<envKey>/reports/archive/exchangeErrors/
+      output:
+        path: /mnt/<envKey>/reports/exchangeErrors/outbound/CO/level2/
+        pathlevel0e3: /mnt/<envKey>/reports/exchangeErrors/outbound/CO/level0/e3/
+        pathlevel0isg: /mnt/<envKey>/reports/exchangeErrors/outbound/CO/level0/isg/
+        reportNameL2: src_rpt_name_L2_[yyyyMMdd_HHmm].xlsx
+        reportNameL0E3: src_rpt_name_E3_L0_[yyyyMMdd_HHmm].xlsx
+        reportNameL0Isg: src_rpt_name_ISG_L0_[yyyyMMdd_HHmm].xlsx
+      src:
+        sheetL2: 1
+        sheetL0E3: 1
+        sheetL0Isg: 1
+        columnsL2: 1-33
+        columnsL0E3: 1-33
+        columnsL0Isg: 1-33
+        rulesL2: 19 EQUALSIGNORECASE "ERROR"|18 EQUALSIGNORECASE "Level 2"
+        rulesL0E3: 19 EQUALSIGNORECASE "ERROR"|18 EQUALSIGNORECASE "Level 0"|6 LENGTHGREATER 5
+        rulesL0Isg: 19 EQUALSIGNORECASE "ERROR"|18 EQUALSIGNORECASE "Level 0"|6 LENGTHLESSEQUAL 5
+        sheetnameL2: CO Level 2
+        sheetnameL0E3: CO Level 0 - E3
+        sheetnameL0Isg: CO Level 0 - ISG
+    isgPbError :
+      reportPath : /mnt/<envKey>/reports/isgpberror/outbound/
+    hecntive:
+      filePath: /mnt/<envKey>/reports/hcentive/outbound/
+      nfsOutArchivePath: /mnt/<envKey>/reports/archive/hcentive/outbound/

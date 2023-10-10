@@ -1,0 +1,48 @@
+﻿kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cmm-cpp-letterxmlgen-task
+  namespace: cmm-uat
+  uid: dbf66c41-2a4e-41a9-afe1-64c0ff3acd2b
+  resourceVersion: '517644625'
+  creationTimestamp: '2022-09-27T14:09:00Z'
+  labels:
+    app.kubernetes.io/instance: cmm-uat
+    velero.io/backup-name: migration-2fc5e-initial-f5gtx
+    velero.io/restore-name: migration-2fc5e-final-vdscp
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"v1","data":{"application.yaml":"spring:\n  cloud:\n   
+      task:\n      closecontext_enabled: true\t\n      name:
+      cmm-cpp-letterxmlgen-task  \t\n  profiles:\n    active: dev\n 
+      application:\n    name: cmm-cpp-letterxmlgen-task\ndatasource:\n  service:
+      false\n  task:
+      true"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"cmm-uat","velero.io/backup-name":"migration-2fc5e-initial-f5gtx","velero.io/restore-name":"migration-2fc5e-final-vdscp"},"name":"cmm-cpp-letterxmlgen-task","namespace":"cmm-uat"}}
+  managedFields:
+    - manager: velero-server
+      operation: Update
+      apiVersion: v1
+      time: '2022-09-27T14:09:00Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          .: {}
+          'f:application.yaml': {}
+        'f:metadata':
+          'f:annotations': {}
+          'f:labels':
+            .: {}
+            'f:app.kubernetes.io/instance': {}
+            'f:velero.io/backup-name': {}
+            'f:velero.io/restore-name': {}
+    - manager: argocd-application-controller
+      operation: Update
+      apiVersion: v1
+      time: '2023-04-06T08:05:59Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:kubectl.kubernetes.io/last-applied-configuration': {}
+data:
+  application.yaml: "spring:\n  cloud:\n    task:\n      closecontext_enabled: true\t\n      name: cmm-cpp-letterxmlgen-task  \t\n  profiles:\n    active: dev\n  application:\n    name: cmm-cpp-letterxmlgen-task\ndatasource:\n  service: false\n  task: true"

@@ -1,0 +1,59 @@
+﻿kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ie3np2
+  namespace: cmm-uat
+  uid: 551a3ab9-fca2-4283-b5e4-2f100667dc35
+  resourceVersion: '38099271'
+  creationTimestamp: '2022-08-23T18:45:21Z'
+  annotations:
+    pv.kubernetes.io/bind-completed: 'yes'
+  finalizers:
+    - kubernetes.io/pvc-protection
+  managedFields:
+    - manager: kubectl-create
+      operation: Update
+      apiVersion: v1
+      time: '2022-08-23T18:45:21Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:accessModes': {}
+          'f:resources':
+            'f:requests':
+              .: {}
+              'f:storage': {}
+          'f:storageClassName': {}
+          'f:volumeMode': {}
+          'f:volumeName': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2022-08-23T18:45:22Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:pv.kubernetes.io/bind-completed': {}
+        'f:status':
+          'f:accessModes': {}
+          'f:capacity':
+            .: {}
+            'f:storage': {}
+          'f:phase': {}
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 3632Gi
+  volumeName: cmmuatpv2
+  storageClassName: nfs
+  volumeMode: Filesystem
+status:
+  phase: Bound
+  accessModes:
+    - ReadWriteMany
+  capacity:
+    storage: 3632Gi

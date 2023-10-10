@@ -1,0 +1,73 @@
+﻿kind: ResourceQuota
+apiVersion: v1
+metadata:
+  name: quota-kc24xlarge
+  namespace: cmm-uat
+  uid: bf8c2a18-6930-4999-af89-a669808f7049
+  resourceVersion: '999797226'
+  creationTimestamp: '2023-09-28T13:53:34Z'
+  managedFields:
+    - manager: cluster-policy-controller
+      operation: Update
+      apiVersion: v1
+      time: '2023-09-28T13:53:34Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:hard':
+            .: {}
+            'f:limits.cpu': {}
+            'f:limits.memory': {}
+            'f:pods': {}
+            'f:requests.cpu': {}
+            'f:requests.memory': {}
+      subresource: status
+    - manager: manager
+      operation: Update
+      apiVersion: v1
+      time: '2023-09-28T13:53:34Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:hard':
+            .: {}
+            'f:limits.cpu': {}
+            'f:limits.memory': {}
+            'f:pods': {}
+            'f:requests.cpu': {}
+            'f:requests.memory': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2023-10-10T14:45:58Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:used':
+            .: {}
+            'f:limits.cpu': {}
+            'f:limits.memory': {}
+            'f:pods': {}
+            'f:requests.cpu': {}
+            'f:requests.memory': {}
+      subresource: status
+spec:
+  hard:
+    limits.cpu: '96'
+    limits.memory: 192Gi
+    pods: '96'
+    requests.cpu: '48'
+    requests.memory: 96Gi
+status:
+  hard:
+    limits.cpu: '96'
+    limits.memory: 192Gi
+    pods: '96'
+    requests.cpu: '48'
+    requests.memory: 96Gi
+  used:
+    limits.cpu: 25600m
+    limits.memory: 102804Mi
+    pods: '29'
+    requests.cpu: 10500m
+    requests.memory: 47912Mi

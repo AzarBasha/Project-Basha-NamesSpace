@@ -1,0 +1,344 @@
+﻿kind: Pod
+apiVersion: v1
+metadata:
+  name: may-22-ctr-grpxmlload-app-1ew3g4p217
+  namespace: cmm-uat
+  uid: d0de6154-590d-4fc9-b214-d47d4df4993c
+  resourceVersion: '975165844'
+  creationTimestamp: '2023-10-02T02:34:39Z'
+  labels:
+    role: spring-app
+    spring-app-id: may-22-ctr-grpxmlload-app-1ew3g4p217
+    spring-deployment-id: may-22-ctr-grpxmlload-app-1ew3g4p217
+    task-name: may-22-ctr-grpxmlload-app
+  annotations:
+    k8s.v1.cni.cncf.io/network-status: |-
+      [{
+          "name": "openshift-sdn",
+          "interface": "eth0",
+          "ips": [
+              "10.92.14.245"
+          ],
+          "default": true,
+          "dns": {}
+      }]
+    k8s.v1.cni.cncf.io/networks-status: |-
+      [{
+          "name": "openshift-sdn",
+          "interface": "eth0",
+          "ips": [
+              "10.92.14.245"
+          ],
+          "default": true,
+          "dns": {}
+      }]
+    openshift.io/scc: restricted-v2
+    seccomp.security.alpha.kubernetes.io/pod: runtime/default
+  managedFields:
+    - manager: okhttp
+      operation: Update
+      apiVersion: v1
+      time: '2023-10-02T02:34:39Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:role': {}
+            'f:spring-app-id': {}
+            'f:spring-deployment-id': {}
+            'f:task-name': {}
+        'f:spec':
+          'f:volumes':
+            .: {}
+            'k:{"name":"cmmreleasesitpv1"}':
+              .: {}
+              'f:name': {}
+              'f:persistentVolumeClaim':
+                .: {}
+                'f:claimName': {}
+          'f:containers':
+            'k:{"name":"may-22-ctr-grpxmlload-app-n1kgd550dq"}':
+              'f:image': {}
+              'f:volumeMounts':
+                .: {}
+                'k:{"mountPath":"/mnt"}':
+                  .: {}
+                  'f:mountPath': {}
+                  'f:name': {}
+              'f:terminationMessagePolicy': {}
+              .: {}
+              'f:resources':
+                .: {}
+                'f:limits':
+                  .: {}
+                  'f:cpu': {}
+                  'f:memory': {}
+                'f:requests':
+                  .: {}
+                  'f:cpu': {}
+                  'f:memory': {}
+              'f:env':
+                'k:{"name":"SPRING_DATASOURCE_USERNAME"}':
+                  .: {}
+                  'f:name': {}
+                  'f:value': {}
+                'k:{"name":"SPRING_DATASOURCE_DRIVERCLASSNAME"}':
+                  .: {}
+                  'f:name': {}
+                  'f:value': {}
+                'k:{"name":"SPRING_CLOUD_APPLICATION_GUID"}':
+                  .: {}
+                  'f:name': {}
+                  'f:valueFrom':
+                    .: {}
+                    'f:fieldRef': {}
+                'k:{"name":"SPRING_CLOUD_TASK_EXECUTIONID"}':
+                  .: {}
+                  'f:name': {}
+                  'f:value': {}
+                'k:{"name":"SPRING_DATASOURCE_PASSWORD"}':
+                  .: {}
+                  'f:name': {}
+                  'f:value': {}
+                'k:{"name":"TZ"}':
+                  .: {}
+                  'f:name': {}
+                  'f:value': {}
+                'k:{"name":"SPRING_CLOUD_TASK_NAME"}':
+                  .: {}
+                  'f:name': {}
+                  'f:value': {}
+                .: {}
+                'k:{"name":"MANAGEMENT_METRICS_TAGS_APPLICATION"}':
+                  .: {}
+                  'f:name': {}
+                  'f:value': {}
+                'k:{"name":"SPRING_DATASOURCE_URL"}':
+                  .: {}
+                  'f:name': {}
+                  'f:value': {}
+                'k:{"name":"MANAGEMENT_METRICS_TAGS_SERVICE"}':
+                  .: {}
+                  'f:name': {}
+                  'f:value': {}
+              'f:terminationMessagePath': {}
+              'f:imagePullPolicy': {}
+              'f:name': {}
+          'f:dnsPolicy': {}
+          'f:restartPolicy': {}
+          'f:schedulerName': {}
+          'f:terminationGracePeriodSeconds': {}
+          'f:imagePullSecrets':
+            .: {}
+            'k:{"name":"scdf-sa-dockercfg-cmm"}': {}
+          'f:enableServiceLinks': {}
+          'f:securityContext': {}
+    - manager: multus
+      operation: Update
+      apiVersion: v1
+      time: '2023-10-02T02:34:42Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:k8s.v1.cni.cncf.io/network-status': {}
+            'f:k8s.v1.cni.cncf.io/networks-status': {}
+      subresource: status
+    - manager: kubelet
+      operation: Update
+      apiVersion: v1
+      time: '2023-10-02T02:36:20Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:conditions':
+            'k:{"type":"ContainersReady"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Initialized"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Ready"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:containerStatuses': {}
+          'f:hostIP': {}
+          'f:phase': {}
+          'f:podIP': {}
+          'f:podIPs':
+            .: {}
+            'k:{"ip":"10.92.14.245"}':
+              .: {}
+              'f:ip': {}
+          'f:startTime': {}
+      subresource: status
+spec:
+  restartPolicy: Never
+  serviceAccountName: default
+  imagePullSecrets:
+    - name: scdf-sa-dockercfg-cmm
+  priority: 0
+  schedulerName: default-scheduler
+  enableServiceLinks: true
+  terminationGracePeriodSeconds: 30
+  preemptionPolicy: PreemptLowerPriority
+  nodeName: caas01-ocp4-np2-dc04-jqdk5-worker-kq48r
+  securityContext:
+    seLinuxOptions:
+      level: 's0:c54,c34'
+    fsGroup: 1002930000
+    seccompProfile:
+      type: RuntimeDefault
+  containers:
+    - resources:
+        limits:
+          cpu: '1'
+          memory: 4500Mi
+        requests:
+          cpu: '1'
+          memory: 4000Mi
+      terminationMessagePath: /dev/termination-log
+      name: may-22-ctr-grpxmlload-app-n1kgd550dq
+      env:
+        - name: MANAGEMENT_METRICS_TAGS_APPLICATION
+          value: >-
+            ${spring.cloud.task.name:unknown}-${spring.cloud.task.executionid:unknown}
+        - name: SPRING_DATASOURCE_URL
+          value: 'jdbc:oracle:thin:@dc04dx22-scan1.internal.das:1525/CMMENRL2T'
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: 'E3core2t#123'
+        - name: TZ
+          value: EST
+        - name: MANAGEMENT_METRICS_TAGS_SERVICE
+          value: task-application
+        - name: SPRING_DATASOURCE_USERNAME
+          value: E3CORE
+        - name: SPRING_CLOUD_TASK_EXECUTIONID
+          value: '10010139014'
+        - name: SPRING_DATASOURCE_DRIVERCLASSNAME
+          value: oracle.jdbc.driver.OracleDriver
+        - name: SPRING_CLOUD_TASK_NAME
+          value: may-22-ctr-grpxmlload-app
+        - name: SPRING_CLOUD_APPLICATION_GUID
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.uid
+      securityContext:
+        capabilities:
+          drop:
+            - ALL
+        runAsUser: 1002930000
+        runAsNonRoot: true
+        allowPrivilegeEscalation: false
+      imagePullPolicy: Always
+      volumeMounts:
+        - name: cmmreleasesitpv1
+          mountPath: /mnt
+        - name: kube-api-access-wzvt8
+          readOnly: true
+          mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      terminationMessagePolicy: File
+      image: >-
+        image-registry.openshift-image-registry.svc:5000/cmm-uat/cmm-cpp-grpxmlload-task:rel-uat
+  serviceAccount: default
+  volumes:
+    - name: cmmreleasesitpv1
+      persistentVolumeClaim:
+        claimName: ie3np2
+    - name: kube-api-access-wzvt8
+      projected:
+        sources:
+          - serviceAccountToken:
+              expirationSeconds: 3607
+              path: token
+          - configMap:
+              name: kube-root-ca.crt
+              items:
+                - key: ca.crt
+                  path: ca.crt
+          - downwardAPI:
+              items:
+                - path: namespace
+                  fieldRef:
+                    apiVersion: v1
+                    fieldPath: metadata.namespace
+          - configMap:
+              name: openshift-service-ca.crt
+              items:
+                - key: service-ca.crt
+                  path: service-ca.crt
+        defaultMode: 420
+  dnsPolicy: ClusterFirst
+  tolerations:
+    - key: node.kubernetes.io/not-ready
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+    - key: node.kubernetes.io/unreachable
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+    - key: node.kubernetes.io/memory-pressure
+      operator: Exists
+      effect: NoSchedule
+status:
+  phase: Succeeded
+  conditions:
+    - type: Initialized
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2023-10-02T02:34:39Z'
+      reason: PodCompleted
+    - type: Ready
+      status: 'False'
+      lastProbeTime: null
+      lastTransitionTime: '2023-10-02T02:36:18Z'
+      reason: PodCompleted
+    - type: ContainersReady
+      status: 'False'
+      lastProbeTime: null
+      lastTransitionTime: '2023-10-02T02:36:18Z'
+      reason: PodCompleted
+    - type: PodScheduled
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2023-10-02T02:34:39Z'
+  hostIP: 10.4.70.31
+  podIP: 10.92.14.245
+  podIPs:
+    - ip: 10.92.14.245
+  startTime: '2023-10-02T02:34:39Z'
+  containerStatuses:
+    - restartCount: 0
+      started: false
+      ready: false
+      name: may-22-ctr-grpxmlload-app-n1kgd550dq
+      state:
+        terminated:
+          exitCode: 0
+          reason: Completed
+          startedAt: '2023-10-02T02:34:42Z'
+          finishedAt: '2023-10-02T02:36:17Z'
+          containerID: >-
+            cri-o://bddfc7de7e33ab3a9aa72ffc4e29b065f357fe84a5f94dfdeb0f09e5930fa2a0
+      imageID: >-
+        image-registry.openshift-image-registry.svc:5000/cmm-uat/cmm-cpp-grpxmlload-task@sha256:08aec35a0503708e25b7ab00098fc5d12f27e0379494323f66d3a1790a78b038
+      image: >-
+        image-registry.openshift-image-registry.svc:5000/cmm-uat/cmm-cpp-grpxmlload-task:rel-uat
+      lastState: {}
+      containerID: 'cri-o://bddfc7de7e33ab3a9aa72ffc4e29b065f357fe84a5f94dfdeb0f09e5930fa2a0'
+  qosClass: Burstable

@@ -1,0 +1,76 @@
+﻿kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: cmm-cpp-grpxmlload-task
+  namespace: cmm-uat
+  uid: c61f635e-8655-415b-899b-c196c067bfbd
+  resourceVersion: '918573376'
+  generation: 36
+  creationTimestamp: '2022-09-27T14:10:40Z'
+  annotations:
+    openshift.io/image.dockerRepositoryCheck: '2023-09-12T00:00:12Z'
+spec:
+  lookupPolicy:
+    local: false
+  tags:
+    - name: rel-uat
+      annotations: null
+      from:
+        kind: DockerImage
+        name: >-
+          quay.apps.lz-np2.ent-ocp4-useast1.aws.internal.das/cmmnonprod/cmm-cpp-grpxmlload-task:rel-uat
+      generation: 35
+      importPolicy:
+        importMode: Legacy
+      referencePolicy:
+        type: Source
+    - name: rel-uat2
+      annotations: null
+      from:
+        kind: DockerImage
+        name: >-
+          quay.apps.np2.ent-ocp4-np2-useast1.aws.internal.das/cmmnonprod/cmm-cpp-grpxmlload-task:rel-uat2
+      generation: 36
+      importPolicy:
+        importMode: Legacy
+      referencePolicy:
+        type: Source
+status:
+  dockerImageRepository: >-
+    image-registry.openshift-image-registry.svc:5000/cmm-uat/cmm-cpp-grpxmlload-task
+  tags:
+    - tag: rel-uat
+      items:
+        - created: '2023-09-11T11:38:00Z'
+          dockerImageReference: >-
+            quay.apps.lz-np2.ent-ocp4-useast1.aws.internal.das/cmmnonprod/cmm-cpp-grpxmlload-task@sha256:08aec35a0503708e25b7ab00098fc5d12f27e0379494323f66d3a1790a78b038
+          image: >-
+            sha256:08aec35a0503708e25b7ab00098fc5d12f27e0379494323f66d3a1790a78b038
+          generation: 35
+        - created: '2023-06-21T07:27:55Z'
+          dockerImageReference: >-
+            quay.apps.lz-np2.ent-ocp4-useast1.aws.internal.das/cmmnonprod/cmm-cpp-grpxmlload-task@sha256:da62403a5dc441dd3bfd128faad0b49664f9a9dbd2f8d79f83b09dd41476fc36
+          image: >-
+            sha256:da62403a5dc441dd3bfd128faad0b49664f9a9dbd2f8d79f83b09dd41476fc36
+          generation: 32
+        - created: '2023-06-21T07:22:02Z'
+          dockerImageReference: >-
+            quay.apps.lz-np2.ent-ocp4-useast1.aws.internal.das/cmmnonprod/cmm-cpp-grpxmlload-task@sha256:d7ea7a4adc3357022e7d66f5080bb84f4d1c7b44aa76270a6840a1e0d826a64d
+          image: >-
+            sha256:d7ea7a4adc3357022e7d66f5080bb84f4d1c7b44aa76270a6840a1e0d826a64d
+          generation: 30
+    - tag: rel-uat2
+      items: null
+      conditions:
+        - type: ImportSuccess
+          status: 'False'
+          lastTransitionTime: '2023-09-12T00:00:12Z'
+          reason: InternalError
+          message: >-
+            Internal error occurred:
+            quay.apps.np2.ent-ocp4-np2-useast1.aws.internal.das/cmmnonprod/cmm-cpp-grpxmlload-task:rel-uat2:
+            Get
+            "https://quay.apps.np2.ent-ocp4-np2-useast1.aws.internal.das/v2/":
+            dial tcp: lookup quay.apps.np2.ent-ocp4-np2-useast1.aws.internal.das
+            on 10.90.0.10:53: no such host
+          generation: 36
