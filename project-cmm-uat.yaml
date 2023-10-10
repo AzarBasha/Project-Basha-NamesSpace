@@ -1,0 +1,82 @@
+﻿kind: Project
+apiVersion: project.openshift.io/v1
+metadata:
+  name: cmm-uat
+  uid: c5cdb0dc-c0e3-4264-af3b-88ccf5c6f598
+  resourceVersion: '964961731'
+  creationTimestamp: '2022-08-23T18:05:12Z'
+  labels:
+    kubernetes.io/metadata.name: cmm-uat
+    openshift-pipelines.tekton.dev/namespace-reconcile-version: v1.6.4
+    pod-security.kubernetes.io/audit: baseline
+    pod-security.kubernetes.io/audit-version: v1.24
+    pod-security.kubernetes.io/warn: baseline
+    pod-security.kubernetes.io/warn-version: v1.24
+    size: kc24xlarge
+    team: cmm
+  annotations:
+    openshift.io/sa.scc.mcs: 's0:c54,c34'
+    openshift.io/sa.scc.supplemental-groups: 1002930000/10000
+    openshift.io/sa.scc.uid-range: 1002930000/10000
+    splunk.com/index: ie3
+  managedFields:
+    - manager: manager
+      operation: Update
+      apiVersion: v1
+      time: '2022-08-23T18:05:12Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:splunk.com/index': {}
+          'f:labels':
+            .: {}
+            'f:kubernetes.io/metadata.name': {}
+            'f:team': {}
+    - manager: openshift-pipelines-operator
+      operation: Update
+      apiVersion: v1
+      time: '2022-08-23T18:05:13Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            'f:openshift-pipelines.tekton.dev/namespace-reconcile-version': {}
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2022-09-27T13:58:49Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:openshift.io/sa.scc.mcs': {}
+            'f:openshift.io/sa.scc.supplemental-groups': {}
+            'f:openshift.io/sa.scc.uid-range': {}
+    - manager: cluster-policy-controller
+      operation: Update
+      apiVersion: v1
+      time: '2023-07-13T02:08:38Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            'f:pod-security.kubernetes.io/audit': {}
+            'f:pod-security.kubernetes.io/audit-version': {}
+            'f:pod-security.kubernetes.io/warn': {}
+            'f:pod-security.kubernetes.io/warn-version': {}
+    - manager: kubectl-edit
+      operation: Update
+      apiVersion: v1
+      time: '2023-09-28T13:53:23Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            'f:size': {}
+spec:
+  finalizers:
+    - kubernetes
+status:
+  phase: Active

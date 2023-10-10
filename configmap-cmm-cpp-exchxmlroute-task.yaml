@@ -1,0 +1,106 @@
+﻿kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cmm-cpp-exchxmlroute-task
+  namespace: cmm-uat
+  uid: 627d7791-6121-49d2-9c95-c37adbe9b003
+  resourceVersion: '849735445'
+  creationTimestamp: '2022-10-21T20:26:04Z'
+  labels:
+    app.kubernetes.io/instance: cmm-uat
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"v1","data":{"application.yaml":"spring:\n 
+      application:\n    name: cmm-cpp-exchxmlroute-task\n  cloud:\n   
+      task:\n      closecontext_enabled: true\n      name:
+      ${spring.application.name} \n      batch:\n       fail-on-job-failure:
+      true\n  jpa:\n    show-sql: true\n    hibernate:\n      ddl-auto: none\n 
+      main:\n    allow-bean-definition-overriding: true\n  mail:\n    host:
+      smtpinternal.wellpoint.com\n\nexchXmlRoute:      \n  headerStartsWith:
+      _W-SOF\n  generateHeaderFile: false\n  filePrefix: SNDHIXT_*\n 
+      report:\n    fileName: ExchangeXMLRoute        \n    headers: File
+      Name,Status\n    headersLength: 26,15\n    sheetName: File Name(s)\n 
+      efx:\n    enabled: true\n    efxEnabledStates: KY\n    host:
+      efxuat.int.anthem.com\n    userName: KY_t_ant_wlp_une3sc\n    password:
+      KY_FHb3VTM_64J4tS45\nemail:\n  toList:
+      dl-ie3notification-test@anthem.com\n  ccList:
+      dl-ie3notification-test@anthem.com\n  bccList:
+      dl-ie3notification-test@anthem.com\n  fromAddress:
+      intge3autonotification@anthem.com\n  subject: Exchange XML Route Error
+      Status- Env :\u003cenvKey\u003e\n  body: The job has been processed and
+      attahced the failed records list\n\nxmlFileGateway:\n  fileNamePrefix:
+      SNDHIX\n  host: VA10N40164\n  port: 22\n  username: srcSETDM \n  password:
+      SrcSft#1\n  inboundDestination: /wsapps/INTGE3/EDI-GW/GroupXML/input/\n 
+      \ndatasource:\n  service: false\n  task:
+      true"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"cmm-uat"},"name":"cmm-cpp-exchxmlroute-task","namespace":"cmm-uat"}}
+  managedFields:
+    - manager: argocd-application-controller
+      operation: Update
+      apiVersion: v1
+      time: '2022-10-21T20:26:04Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          .: {}
+          'f:application.yaml': {}
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:kubectl.kubernetes.io/last-applied-configuration': {}
+          'f:labels':
+            .: {}
+            'f:app.kubernetes.io/instance': {}
+data:
+  application.yaml: |-
+    spring:
+      application:
+        name: cmm-cpp-exchxmlroute-task
+      cloud:
+        task:
+          closecontext_enabled: true
+          name: ${spring.application.name} 
+          batch:
+           fail-on-job-failure: true
+      jpa:
+        show-sql: true
+        hibernate:
+          ddl-auto: none
+      main:
+        allow-bean-definition-overriding: true
+      mail:
+        host: smtpinternal.wellpoint.com
+
+    exchXmlRoute:      
+      headerStartsWith: _W-SOF
+      generateHeaderFile: false
+      filePrefix: SNDHIXT_*
+      report:
+        fileName: ExchangeXMLRoute        
+        headers: File Name,Status
+        headersLength: 26,15
+        sheetName: File Name(s)
+      efx:
+        enabled: true
+        efxEnabledStates: KY
+        host: efxuat.int.anthem.com
+        userName: KY_t_ant_wlp_une3sc
+        password: KY_FHb3VTM_64J4tS45
+    email:
+      toList: dl-ie3notification-test@anthem.com
+      ccList: dl-ie3notification-test@anthem.com
+      bccList: dl-ie3notification-test@anthem.com
+      fromAddress: intge3autonotification@anthem.com
+      subject: Exchange XML Route Error Status- Env :<envKey>
+      body: The job has been processed and attahced the failed records list
+
+    xmlFileGateway:
+      fileNamePrefix: SNDHIX
+      host: VA10N40164
+      port: 22
+      username: srcSETDM 
+      password: SrcSft#1
+      inboundDestination: /wsapps/INTGE3/EDI-GW/GroupXML/input/
+      
+    datasource:
+      service: false
+      task: true

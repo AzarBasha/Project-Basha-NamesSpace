@@ -1,0 +1,169 @@
+﻿kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cmm-cpp-batch-common
+  namespace: cmm-uat
+  uid: 6d8c37ba-40e1-4e62-b1f7-cb45f1807512
+  resourceVersion: '829181509'
+  creationTimestamp: '2022-09-27T14:08:59Z'
+  labels:
+    app.kubernetes.io/instance: cmm-uat
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"v1","data":{"application.yaml":"ie3:\n  profiles:\n     
+      active: uat\n  filePermissions:
+      OWNER_WRITE,OWNER_READ,OWNER_EXECUTE,GROUP_EXECUTE,GROUP_READ,GROUP_WRITE,OTHERS_READ,OTHERS_EXECUTE,OTHERS_WRITE\n     
+      \nediGateway:\n  host: VA10N40164.wellpoint.com\n  port: 22\n  username:
+      srcSETDM\nexchangeServer:\n  host: VA10N40164.wellpoint.com\n  port: 22\n 
+      username: srcSETDM\nediGWServer:\n  host: egwqa3.wellpoint.com\n  port:
+      22\n  username: intge300\nediGWHServer:\n  host:
+      VA10N40164.wellpoint.com\n  port: 22\n  username:
+      srcSETDM\nediLtrXmlGateway:\n  host: VA10N40164.wellpoint.com\n  port:
+      22\n  username: srcSETDM\nediEffCanTermGWServer:\n  host:
+      va33tlvwbs441.wellpoint.com\n  port: 22\n  username:
+      srccmm\nediCHServer:\n  host: VAATHMR029.corp.anthem.com\n  port: 22\n 
+      username: srcapie3@devad.wellpoint.com \n  \n\npublickeyIterativePwd:
+      publickey,keyboard-interctive,password\n\ne3CoreDatasource:\n  url:
+      jdbc:oracle:thin:@dc04dx22-scan1.internal.das:1525/cmmenrl2t\n  username:
+      E3CORE\ne3ReconDatasource:\n  url:
+      jdbc:oracle:thin:@dc04dx22-scan1.internal.das:1525/cmmenrl2t\n  username:
+      E3RECON\ne3CcdiDatasource:\n  url:
+      jdbc:oracle:thin:@dc04dx22-scan1.internal.das:1525/cmmenrl2t\n  username:
+      E3CCDI\nhikaricp:\n  minimumIdle: 10\n  connectionTimeOut: 2\n 
+      idleTimeout: 2\n  maxPoolSize: 50\n  leakDetectionThreshold :
+      30\ne3core:\n  hikaricp:\n    minimumIdle: 10\n    connectionTimeOut:
+      2\n    idleTimeout: 2\n    maxPoolSize: 100\n    leakDetectionThreshold :
+      30\nccdi:\n  hikaricp:\n    minimumIdle: 1\n    connectionTimeOut: 2\n   
+      idleTimeout: 2\n    maxPoolSize: 10\n    leakDetectionThreshold :
+      30\nrecon:\n  hikaricp:\n    minimumIdle: 10\n    connectionTimeOut:
+      2\n    idleTimeout: 2\n    maxPoolSize: 50\n    leakDetectionThreshold :
+      30\nservices:\n  hikaricp:\n    minimumIdle: 10\n    maxLifeTime: 30\n   
+      connectionTimeOut: 2\n    maxPoolSize: 50\n    leakDetectionThreshold :
+      30\nspring:\n  mail:\n    host: smtpinternal.wellpoint.com\nemail:\n 
+      toList: dl-ie3notification-test@anthem.com\n  ccList:
+      dl-ie3notification-test@anthem.com\n  bccList:
+      dl-ie3notification-test@anthem.com\n  fromAddress:
+      intge3autonotification@anthem.com\n  subject: ISG CONSTRUCTWCF ERROR
+      STATUS\nmanagement:\n  endpoints:\n    web:\n      exposure:\n       
+      include:
+      \"*\""},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"cmm-uat"},"name":"cmm-cpp-batch-common","namespace":"cmm-uat"}}
+  managedFields:
+    - manager: velero-server
+      operation: Update
+      apiVersion: v1
+      time: '2022-09-27T14:08:59Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data': {}
+        'f:metadata':
+          'f:annotations': {}
+          'f:labels':
+            .: {}
+            'f:app.kubernetes.io/instance': {}
+    - manager: argocd-application-controller
+      operation: Update
+      apiVersion: v1
+      time: '2022-10-20T07:49:27Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          'f:application.yaml': {}
+        'f:metadata':
+          'f:annotations':
+            'f:kubectl.kubernetes.io/last-applied-configuration': {}
+data:
+  application.yaml: |-
+    ie3:
+      profiles:
+          active: uat
+      filePermissions: OWNER_WRITE,OWNER_READ,OWNER_EXECUTE,GROUP_EXECUTE,GROUP_READ,GROUP_WRITE,OTHERS_READ,OTHERS_EXECUTE,OTHERS_WRITE
+          
+    ediGateway:
+      host: VA10N40164.wellpoint.com
+      port: 22
+      username: srcSETDM
+    exchangeServer:
+      host: VA10N40164.wellpoint.com
+      port: 22
+      username: srcSETDM
+    ediGWServer:
+      host: egwqa3.wellpoint.com
+      port: 22
+      username: intge300
+    ediGWHServer:
+      host: VA10N40164.wellpoint.com
+      port: 22
+      username: srcSETDM
+    ediLtrXmlGateway:
+      host: VA10N40164.wellpoint.com
+      port: 22
+      username: srcSETDM
+    ediEffCanTermGWServer:
+      host: va33tlvwbs441.wellpoint.com
+      port: 22
+      username: srccmm
+    ediCHServer:
+      host: VAATHMR029.corp.anthem.com
+      port: 22
+      username: srcapie3@devad.wellpoint.com 
+      
+
+    publickeyIterativePwd: publickey,keyboard-interctive,password
+
+    e3CoreDatasource:
+      url: jdbc:oracle:thin:@dc04dx22-scan1.internal.das:1525/cmmenrl2t
+      username: E3CORE
+    e3ReconDatasource:
+      url: jdbc:oracle:thin:@dc04dx22-scan1.internal.das:1525/cmmenrl2t
+      username: E3RECON
+    e3CcdiDatasource:
+      url: jdbc:oracle:thin:@dc04dx22-scan1.internal.das:1525/cmmenrl2t
+      username: E3CCDI
+    hikaricp:
+      minimumIdle: 10
+      connectionTimeOut: 2
+      idleTimeout: 2
+      maxPoolSize: 50
+      leakDetectionThreshold : 30
+    e3core:
+      hikaricp:
+        minimumIdle: 10
+        connectionTimeOut: 2
+        idleTimeout: 2
+        maxPoolSize: 100
+        leakDetectionThreshold : 30
+    ccdi:
+      hikaricp:
+        minimumIdle: 1
+        connectionTimeOut: 2
+        idleTimeout: 2
+        maxPoolSize: 10
+        leakDetectionThreshold : 30
+    recon:
+      hikaricp:
+        minimumIdle: 10
+        connectionTimeOut: 2
+        idleTimeout: 2
+        maxPoolSize: 50
+        leakDetectionThreshold : 30
+    services:
+      hikaricp:
+        minimumIdle: 10
+        maxLifeTime: 30
+        connectionTimeOut: 2
+        maxPoolSize: 50
+        leakDetectionThreshold : 30
+    spring:
+      mail:
+        host: smtpinternal.wellpoint.com
+    email:
+      toList: dl-ie3notification-test@anthem.com
+      ccList: dl-ie3notification-test@anthem.com
+      bccList: dl-ie3notification-test@anthem.com
+      fromAddress: intge3autonotification@anthem.com
+      subject: ISG CONSTRUCTWCF ERROR STATUS
+    management:
+      endpoints:
+        web:
+          exposure:
+            include: "*"

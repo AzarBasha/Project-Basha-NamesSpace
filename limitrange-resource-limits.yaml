@@ -1,0 +1,26 @@
+﻿kind: LimitRange
+apiVersion: v1
+metadata:
+  name: resource-limits
+  namespace: cmm-uat
+  uid: 6ed4c434-3202-4747-8291-72448cd196d4
+  resourceVersion: '885709033'
+  creationTimestamp: '2022-08-23T18:05:21Z'
+  managedFields:
+    - manager: manager
+      operation: Update
+      apiVersion: v1
+      time: '2022-08-23T18:05:21Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:spec':
+          'f:limits': {}
+spec:
+  limits:
+    - type: Container
+      default:
+        cpu: '1'
+        memory: 2Gi
+      defaultRequest:
+        cpu: 200m
+        memory: 500Mi

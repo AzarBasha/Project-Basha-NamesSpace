@@ -1,0 +1,71 @@
+﻿kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cmm-cpp-erestatusupdate-task
+  namespace: cmm-uat
+  uid: 009a2df2-762a-4910-a8a6-e7b0539510d4
+  resourceVersion: '103990951'
+  creationTimestamp: '2022-09-27T14:09:00Z'
+  labels:
+    app.kubernetes.io/instance: cmm-uat
+    velero.io/backup-name: migration-2fc5e-initial-f5gtx
+    velero.io/restore-name: migration-2fc5e-final-vdscp
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"v1","data":{"application.yaml":"spring:\n  cloud:\n   
+      task:\n      closecontext_enabled: true\n  profiles:\n    active: uat\n 
+      application:\n    name: cmm-cpp-erestatusupdate-task\ninfo:\n  app:\n   
+      name: cmm-cpp-erestatusupdate-task\n    description:
+      cmm-cpp-erestatusupdate-task\n    version: 1.0.0\ndatasource:\n  service:
+      false\n  task: true\nerestatusUpdate:\n  username: EEEUSR\n  password:
+      EEETSTRGN\n  serviceName: RatingandQuoting\n  serviceVersion: 1.0\n 
+      senderApp: EEE\n  opername: calculateHIXRate\n  ereEndpoint:
+      https://uats-soa-esb.in.anthem.com/Sales/1.0/RatingandQuoting\n 
+      recycle_stts: ERE
+      Recycle"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"cmm-uat"},"name":"cmm-cpp-erestatusupdate-task","namespace":"cmm-uat"}}
+  managedFields:
+    - manager: velero-server
+      operation: Update
+      apiVersion: v1
+      time: '2022-09-27T14:09:00Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          .: {}
+          'f:application.yaml': {}
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:kubectl.kubernetes.io/last-applied-configuration': {}
+          'f:labels':
+            .: {}
+            'f:app.kubernetes.io/instance': {}
+            'f:velero.io/backup-name': {}
+            'f:velero.io/restore-name': {}
+data:
+  application.yaml: |-
+    spring:
+      cloud:
+        task:
+          closecontext_enabled: true
+      profiles:
+        active: uat
+      application:
+        name: cmm-cpp-erestatusupdate-task
+    info:
+      app:
+        name: cmm-cpp-erestatusupdate-task
+        description: cmm-cpp-erestatusupdate-task
+        version: 1.0.0
+    datasource:
+      service: false
+      task: true
+    erestatusUpdate:
+      username: EEEUSR
+      password: EEETSTRGN
+      serviceName: RatingandQuoting
+      serviceVersion: 1.0
+      senderApp: EEE
+      opername: calculateHIXRate
+      ereEndpoint: https://uats-soa-esb.in.anthem.com/Sales/1.0/RatingandQuoting
+      recycle_stts: ERE Recycle

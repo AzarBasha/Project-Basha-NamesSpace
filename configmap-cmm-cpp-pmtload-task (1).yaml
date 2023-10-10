@@ -1,0 +1,91 @@
+﻿kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cmm-cpp-pmtload-task
+  namespace: cmm-uat
+  uid: 6ee74204-bf2f-4969-a3a6-2289ec2e4960
+  resourceVersion: '517619246'
+  creationTimestamp: '2022-09-27T14:09:00Z'
+  labels:
+    app.kubernetes.io/instance: cmm-uat
+    velero.io/backup-name: migration-2fc5e-initial-f5gtx
+    velero.io/restore-name: migration-2fc5e-final-vdscp
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"v1","data":{"application.yaml":"spring:\n 
+      application:\n    name: cmm-cpp-pmtload-task\n  cloud:\n    task:\n     
+      closecontext_enabled: true\n      name: ${spring.application.name} \n     
+      batch:\n       fail-on-job-failure: true\n  main:\n   
+      allow-bean-definition-overriding: true\n  mail:\n   
+      host:smtpinternal.wellpoint.com\n\ndatasource:\n  service: false\n  task:
+      true\n\nisSftpCallable: false\n\nventanexInFileDir:
+      /mnt/\u003cenvKey\u003e/Payments/Ventanex/input\norccInFileDir:
+      /mnt/\u003cenvKey\u003e/Payments/ORCC/input\n\npaymentFileGateway:\n 
+      host: VA10N40164\n  port: 22\n  username: srcSETDM\n  #password:
+      SrcSft#1\n  orccInboundDestination: /wsapps/INTGE3/Payments/ORCC/input/\n 
+      ventInboundDestination: /wsapps/INTGE3/Payments/Ventanex/input/\n 
+      orccFileNamePrefix: ORCC\n  ventFileNamePrefix: VENTANEX\npmtload:\n 
+      phubFileName:
+      E3PH"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"cmm-uat","velero.io/backup-name":"migration-2fc5e-initial-f5gtx","velero.io/restore-name":"migration-2fc5e-final-vdscp"},"name":"cmm-cpp-pmtload-task","namespace":"cmm-uat"}}
+  managedFields:
+    - manager: velero-server
+      operation: Update
+      apiVersion: v1
+      time: '2022-09-27T14:09:00Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data': {}
+        'f:metadata':
+          'f:annotations': {}
+          'f:labels':
+            .: {}
+            'f:app.kubernetes.io/instance': {}
+            'f:velero.io/backup-name': {}
+            'f:velero.io/restore-name': {}
+    - manager: argocd-application-controller
+      operation: Update
+      apiVersion: v1
+      time: '2023-04-06T07:49:54Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          'f:application.yaml': {}
+        'f:metadata':
+          'f:annotations':
+            'f:kubectl.kubernetes.io/last-applied-configuration': {}
+data:
+  application.yaml: |-
+    spring:
+      application:
+        name: cmm-cpp-pmtload-task
+      cloud:
+        task:
+          closecontext_enabled: true
+          name: ${spring.application.name} 
+          batch:
+           fail-on-job-failure: true
+      main:
+        allow-bean-definition-overriding: true
+      mail:
+        host:smtpinternal.wellpoint.com
+
+    datasource:
+      service: false
+      task: true
+
+    isSftpCallable: false
+
+    ventanexInFileDir: /mnt/<envKey>/Payments/Ventanex/input
+    orccInFileDir: /mnt/<envKey>/Payments/ORCC/input
+
+    paymentFileGateway:
+      host: VA10N40164
+      port: 22
+      username: srcSETDM
+      #password: SrcSft#1
+      orccInboundDestination: /wsapps/INTGE3/Payments/ORCC/input/
+      ventInboundDestination: /wsapps/INTGE3/Payments/Ventanex/input/
+      orccFileNamePrefix: ORCC
+      ventFileNamePrefix: VENTANEX
+    pmtload:
+      phubFileName: E3PH

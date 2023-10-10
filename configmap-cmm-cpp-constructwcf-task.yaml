@@ -1,0 +1,130 @@
+﻿kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cmm-cpp-constructwcf-task
+  namespace: cmm-uat
+  uid: 10542118-6883-4468-8124-87fa6dee7754
+  resourceVersion: '942488640'
+  creationTimestamp: '2022-09-27T14:08:59Z'
+  labels:
+    app.kubernetes.io/instance: cmm-uat
+    velero.io/backup-name: migration-2fc5e-initial-f5gtx
+    velero.io/restore-name: migration-2fc5e-final-vdscp
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"v1","data":{"application.yaml":"indGdgName:
+      IMMI.NONX.IMM700BD.INTG(+1)\nshopGdgName:
+      IMMI.NONX.IMM900BD.INTG(+1)\nnotifyDSName:
+      IMMI.NONX.IMM700BD.NOTIFY\nisg:\n  enableTransfer: true\n\nprimaryUrl:
+      https://cmm-cpp-isgintegrator-service-cmm-uat.apps.caas01-ocp4-np2-dc04.ibm-vcs.internal.das/ie3-isg/isgEnrollmentTracker/batchid/search/167\nsecondaryUrl:
+      https://cmm-cpp-isgintegrator-service-cmm-uat.apps.caas01-ocp4-np2-dc04.ibm-vcs.internal.das/ie3-isg/isgEnrollmentTracker/batchid/search/163\nspring:\n 
+      main:\n    allow-bean-definition-overriding: true\n  application:\n   
+      name: cmm-cpp-constructwcf-task\n  cloud:\n    task:\n     
+      closecontext_enabled: true\n      name: ${spring.application.name}\n     
+      batch:\n       fail-on-job-failure: true   \n  mail:\n    host:
+      smtpinternal.wellpoint.com\nsftpTransfer: true\nuserProperties:\n 
+      stateCode: ME\n  srcTypeId: 1\n  appTypeId: 5,6 \nftp:\n  username:
+      FTPWCF\n  #password: inz3#itb\n  host: atck.wellpoint.com\n  port: 21\n 
+      siteCmd: LRECL=2351,RECFM=VB\nefxsg:\n  username: t_ant_wlp_immhintg\n 
+      #password: bSAtk5RfQ6hvV_DM\n  host: efxuat.int.anthem.com\n  port:
+      22\nefxind:\n  username: t_ant_wlp_immhintg\n  #password:
+      bSAtk5RfQ6hvV_DM\ndatasource:\n  service: false\n  task: true\nzipname:\n 
+      primary: IMMH.NONX.IMM701BD.INTG.BT167.ZIP\n  secondary:
+      IMMH.NONX.IMM700BD.INTG.BT163.ZIP\n  smallGrpZip:
+      IMMH.NONX.IMM900BD.INTG.ZIP\nthreadCount: 20\nemail:\n  toList:
+      DL-IE3-LO-Support@anthem.com\n  ccList:
+      dl-ie3notification-test@anthem.com\n  bccList:
+      dl-ie3notification-test@anthem.com\n  fromAddress:
+      intge3autonotification@anthem.com\n  subject: ISG CONSTRUCTWCF FILE
+      STATUS"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"cmm-uat","velero.io/backup-name":"migration-2fc5e-initial-f5gtx","velero.io/restore-name":"migration-2fc5e-final-vdscp"},"name":"cmm-cpp-constructwcf-task","namespace":"cmm-uat"}}
+  managedFields:
+    - manager: velero-server
+      operation: Update
+      apiVersion: v1
+      time: '2022-09-27T14:08:59Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data': {}
+        'f:metadata':
+          'f:annotations': {}
+          'f:labels':
+            .: {}
+            'f:app.kubernetes.io/instance': {}
+            'f:velero.io/backup-name': {}
+            'f:velero.io/restore-name': {}
+    - manager: argocd-application-controller
+      operation: Update
+      apiVersion: v1
+      time: '2023-09-20T10:05:52Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          'f:application.yaml': {}
+        'f:metadata':
+          'f:annotations':
+            'f:kubectl.kubernetes.io/last-applied-configuration': {}
+data:
+  application.yaml: >-
+    indGdgName: IMMI.NONX.IMM700BD.INTG(+1)
+
+    shopGdgName: IMMI.NONX.IMM900BD.INTG(+1)
+
+    notifyDSName: IMMI.NONX.IMM700BD.NOTIFY
+
+    isg:
+      enableTransfer: true
+
+    primaryUrl:
+    https://cmm-cpp-isgintegrator-service-cmm-uat.apps.caas01-ocp4-np2-dc04.ibm-vcs.internal.das/ie3-isg/isgEnrollmentTracker/batchid/search/167
+
+    secondaryUrl:
+    https://cmm-cpp-isgintegrator-service-cmm-uat.apps.caas01-ocp4-np2-dc04.ibm-vcs.internal.das/ie3-isg/isgEnrollmentTracker/batchid/search/163
+
+    spring:
+      main:
+        allow-bean-definition-overriding: true
+      application:
+        name: cmm-cpp-constructwcf-task
+      cloud:
+        task:
+          closecontext_enabled: true
+          name: ${spring.application.name}
+          batch:
+           fail-on-job-failure: true   
+      mail:
+        host: smtpinternal.wellpoint.com
+    sftpTransfer: true
+
+    userProperties:
+      stateCode: ME
+      srcTypeId: 1
+      appTypeId: 5,6 
+    ftp:
+      username: FTPWCF
+      #password: inz3#itb
+      host: atck.wellpoint.com
+      port: 21
+      siteCmd: LRECL=2351,RECFM=VB
+    efxsg:
+      username: t_ant_wlp_immhintg
+      #password: bSAtk5RfQ6hvV_DM
+      host: efxuat.int.anthem.com
+      port: 22
+    efxind:
+      username: t_ant_wlp_immhintg
+      #password: bSAtk5RfQ6hvV_DM
+    datasource:
+      service: false
+      task: true
+    zipname:
+      primary: IMMH.NONX.IMM701BD.INTG.BT167.ZIP
+      secondary: IMMH.NONX.IMM700BD.INTG.BT163.ZIP
+      smallGrpZip: IMMH.NONX.IMM900BD.INTG.ZIP
+    threadCount: 20
+
+    email:
+      toList: DL-IE3-LO-Support@anthem.com
+      ccList: dl-ie3notification-test@anthem.com
+      bccList: dl-ie3notification-test@anthem.com
+      fromAddress: intge3autonotification@anthem.com
+      subject: ISG CONSTRUCTWCF FILE STATUS

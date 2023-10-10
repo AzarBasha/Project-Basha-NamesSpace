@@ -1,0 +1,102 @@
+﻿kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cmm-cpp-edisplit
+  namespace: cmm-uat
+  uid: 757f0877-a80a-411d-bef7-6a40fb0137a0
+  resourceVersion: '736579713'
+  creationTimestamp: '2022-09-27T14:09:00Z'
+  labels:
+    app.kubernetes.io/instance: cmm-uat
+    velero.io/backup-name: migration-2fc5e-initial-f5gtx
+    velero.io/restore-name: migration-2fc5e-final-vdscp
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"v1","data":{"application.yaml":"app:\n  edisplit:
+      enabled\nspring:\n  profiles:\n    active: uat\n  application:\n    name:
+      cmm-cpp-edisplit-task\n  cloud:\n    task:\n      closecontext-enabled:
+      true\n      name: ${spring.application.name}\n  jpa:\n   
+      hibernate:\n      ddl-auto: none\n    show-sql: false\n  mail:\n    host:
+      smtpinternal.wellpoint.com\negw:\n  fileNamePrefix: SNDHIX\n  host:
+      egwqa3.wellpoint.com\n  port: 22\n  username: intge300\n  #password:
+      Vn9d3n3o\n  inboundDestination: /wsapps/INTGE3/EDI-GW/834/input/\n 
+      outboundDestination: /wsapps/INTGE3/EDI-GW/834/output/\negwHeader:\n 
+      host: VA10N40164.wellpoint.com\n  port: 22\n  username: srcSETDM\n 
+      password: SrcSft#1\nemail:\n  toList:
+      dl-ie3notification-test@anthem.com\n  ccList:
+      dl-ie3notification-test@anthem.com\n  bccList:
+      dl-ie3notification-test@anthem.com\n  fromAddress:
+      intge3autonotification@anthem.com\n  subject: EDI Split Job Status - TEST
+      ENV\nnfsDrive:\n  inbound834: /mnt/uat/edi834/inbound834/\n  split834:
+      /mnt/uat/edi834/split834/\ndatasource:\n  service: false\n  task:
+      true"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"cmm-uat","velero.io/backup-name":"migration-2fc5e-initial-f5gtx","velero.io/restore-name":"migration-2fc5e-final-vdscp"},"name":"cmm-cpp-edisplit","namespace":"cmm-uat"}}
+  managedFields:
+    - manager: velero-server
+      operation: Update
+      apiVersion: v1
+      time: '2022-09-27T14:09:00Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data': {}
+        'f:metadata':
+          'f:annotations': {}
+          'f:labels':
+            .: {}
+            'f:app.kubernetes.io/instance': {}
+            'f:velero.io/backup-name': {}
+            'f:velero.io/restore-name': {}
+    - manager: argocd-application-controller
+      operation: Update
+      apiVersion: v1
+      time: '2023-07-03T12:13:27Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          'f:application.yaml': {}
+        'f:metadata':
+          'f:annotations':
+            'f:kubectl.kubernetes.io/last-applied-configuration': {}
+data:
+  application.yaml: |-
+    app:
+      edisplit: enabled
+    spring:
+      profiles:
+        active: uat
+      application:
+        name: cmm-cpp-edisplit-task
+      cloud:
+        task:
+          closecontext-enabled: true
+          name: ${spring.application.name}
+      jpa:
+        hibernate:
+          ddl-auto: none
+        show-sql: false
+      mail:
+        host: smtpinternal.wellpoint.com
+    egw:
+      fileNamePrefix: SNDHIX
+      host: egwqa3.wellpoint.com
+      port: 22
+      username: intge300
+      #password: Vn9d3n3o
+      inboundDestination: /wsapps/INTGE3/EDI-GW/834/input/
+      outboundDestination: /wsapps/INTGE3/EDI-GW/834/output/
+    egwHeader:
+      host: VA10N40164.wellpoint.com
+      port: 22
+      username: srcSETDM
+      password: SrcSft#1
+    email:
+      toList: dl-ie3notification-test@anthem.com
+      ccList: dl-ie3notification-test@anthem.com
+      bccList: dl-ie3notification-test@anthem.com
+      fromAddress: intge3autonotification@anthem.com
+      subject: EDI Split Job Status - TEST ENV
+    nfsDrive:
+      inbound834: /mnt/uat/edi834/inbound834/
+      split834: /mnt/uat/edi834/split834/
+    datasource:
+      service: false
+      task: true

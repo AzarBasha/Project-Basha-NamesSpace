@@ -1,0 +1,265 @@
+﻿kind: Deployment
+apiVersion: apps/v1
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: '1'
+    openshift.io/backup-registry-hostname: 'image-registry.openshift-image-registry.svc:5000'
+    openshift.io/backup-server-version: '1.21'
+    openshift.io/restore-registry-hostname: 'image-registry.openshift-image-registry.svc:5000'
+    openshift.io/restore-server-version: '1.21'
+  resourceVersion: '950931461'
+  name: skipper
+  uid: 889e380b-b714-48ae-8eef-62a270a69052
+  creationTimestamp: '2022-09-27T14:10:38Z'
+  generation: 8
+  managedFields:
+    - manager: velero-server
+      operation: Update
+      apiVersion: apps/v1
+      time: '2022-09-27T14:10:38Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:openshift.io/backup-registry-hostname': {}
+            'f:openshift.io/backup-server-version': {}
+            'f:openshift.io/restore-registry-hostname': {}
+            'f:openshift.io/restore-server-version': {}
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:migration.openshift.io/migrated-by-migmigration': {}
+            'f:migration.openshift.io/migrated-by-migplan': {}
+            'f:velero.io/backup-name': {}
+            'f:velero.io/restore-name': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:app': {}
+            'f:spec':
+              'f:volumes':
+                .: {}
+                'k:{"name":"cmmnp2"}':
+                  .: {}
+                  'f:name': {}
+                  'f:persistentVolumeClaim':
+                    .: {}
+                    'f:claimName': {}
+                'k:{"name":"ie3np2"}':
+                  .: {}
+                  'f:name': {}
+                  'f:persistentVolumeClaim':
+                    .: {}
+                    'f:claimName': {}
+              'f:containers':
+                'k:{"name":"skipper"}':
+                  'f:image': {}
+                  'f:volumeMounts':
+                    .: {}
+                    'k:{"mountPath":"cmm"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                    'k:{"mountPath":"ie3"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                  'f:terminationMessagePolicy': {}
+                  .: {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:cpu': {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:cpu': {}
+                      'f:memory': {}
+                  'f:env':
+                    .: {}
+                    'k:{"name":"JAVA_OPTIONS"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"SPRING_CLOUD_KUBERNETES_CONFIG_NAME"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"SPRING_CLOUD_KUBERNETES_SECRETS_ENABLE_API"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"SPRING_CLOUD_KUBERNETES_SECRETS_NAME"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                  'f:terminationMessagePath': {}
+                  'f:imagePullPolicy': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":80,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:protocol': {}
+                  'f:name': {}
+              'f:dnsPolicy': {}
+              'f:serviceAccount': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:terminationGracePeriodSeconds': {}
+              'f:serviceAccountName': {}
+              'f:securityContext':
+                .: {}
+                'f:supplementalGroups': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2022-11-14T18:47:20Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2023-09-23T19:26:53Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:availableReplicas': {}
+          'f:conditions':
+            'k:{"type":"Available"}':
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+          'f:observedGeneration': {}
+          'f:readyReplicas': {}
+          'f:replicas': {}
+          'f:updatedReplicas': {}
+      subresource: status
+  namespace: cmm-uat
+  labels:
+    app: skipper
+    migration.openshift.io/migrated-by-migmigration: e1397e23-a7a8-4719-b7db-073b2f49f2e3
+    migration.openshift.io/migrated-by-migplan: c13e708d-706a-4dd6-9c76-09edd9127694
+    velero.io/backup-name: migration-2fc5e-initial-f5gtx
+    velero.io/restore-name: migration-2fc5e-final-vdscp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: skipper
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: skipper
+    spec:
+      restartPolicy: Always
+      serviceAccountName: scdf-sa
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        supplementalGroups:
+          - 19999
+          - 17777
+          - 1123008101
+      containers:
+        - resources:
+            limits:
+              cpu: 600m
+              memory: 2Gi
+            requests:
+              cpu: 300m
+              memory: 1Gi
+          terminationMessagePath: /dev/termination-log
+          name: skipper
+          env:
+            - name: SPRING_CLOUD_KUBERNETES_CONFIG_NAME
+              value: skipper
+            - name: SPRING_CLOUD_KUBERNETES_SECRETS_ENABLE_API
+              value: 'true'
+            - name: SPRING_CLOUD_KUBERNETES_SECRETS_NAME
+              value: mysql
+            - name: JAVA_OPTIONS
+              value: >-
+                -javaagent:/cmm/data/IntroscopeAgentUAT/wily/Agent.jar
+                -Dcom.wily.introscope.agent.agentName=skipper-orchestrator
+                -Dintroscope.agent.hostName=ocp-onprem-cmmcpp-uat
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: cmmnp2
+              mountPath: cmm
+            - name: ie3np2
+              mountPath: ie3
+          terminationMessagePolicy: File
+          image: >-
+            image-registry.openshift-image-registry.svc:5000/cmm-uat/cmm-cpp-system-dataflowskipper-j11:latest
+      serviceAccount: scdf-sa
+      volumes:
+        - name: cmmnp2
+          persistentVolumeClaim:
+            claimName: cmmnp2
+        - name: ie3np2
+          persistentVolumeClaim:
+            claimName: ie3np2
+      dnsPolicy: ClusterFirst
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 8
+  replicas: 1
+  updatedReplicas: 1
+  readyReplicas: 1
+  availableReplicas: 1
+  conditions:
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2022-09-27T14:10:38Z'
+      lastTransitionTime: '2022-09-27T14:10:38Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "skipper-6d8ccb9bbd" has successfully progressed.
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2023-09-23T19:26:53Z'
+      lastTransitionTime: '2023-09-23T19:26:53Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.

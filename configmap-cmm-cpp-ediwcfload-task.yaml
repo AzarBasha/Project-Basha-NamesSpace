@@ -1,0 +1,86 @@
+﻿kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cmm-cpp-ediwcfload-task
+  namespace: cmm-uat
+  uid: 048790f6-981c-46a5-a940-e9aea16d2ac0
+  resourceVersion: '103990943'
+  creationTimestamp: '2022-09-27T14:09:00Z'
+  labels:
+    app.kubernetes.io/instance: cmm-uat
+    velero.io/backup-name: migration-2fc5e-initial-f5gtx
+    velero.io/restore-name: migration-2fc5e-final-vdscp
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"v1","data":{"application.yaml":"spring: \n  application:
+      \n    name: cmm-cpp-ediwcfload-task\n  batch: \n    job: \n      enabled:
+      false\n  cloud: \n    task: \n      closecontext_enabled: true\n     
+      name: ${spring.application.name}\n  data: \n    jdbc: \n     
+      repositories: \n        enabled: false\n  freemarker: \n   
+      check-template-location: false\n  jpa: \n    properties: \n     
+      hibernate: \n        jdbc: \n          batch_size: 1000\n       
+      order_inserts: true\n    show-sql: false\n  mail: \n    host:
+      smtpinternal.wellpoint.com\n  main: \n    lazy-initialization:
+      true\nemail:\n  toList: dl-ie3notification-test@anthem.com\n  bccList:
+      dl-ie3notification-test@anthem.com\n  fromAddress:
+      intge3autonotification@anthem.com\n  subject: EDI WCF Load Job Status -
+      UAT ENV\n  emailnotifysubj: EDI WCF Load Job Notification - UAT ENV
+      ENV\ndatasource:\n  service: false\n  task:
+      true"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"cmm-uat"},"name":"cmm-cpp-ediwcfload-task","namespace":"cmm-uat"}}
+  managedFields:
+    - manager: velero-server
+      operation: Update
+      apiVersion: v1
+      time: '2022-09-27T14:09:00Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          .: {}
+          'f:application.yaml': {}
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:kubectl.kubernetes.io/last-applied-configuration': {}
+          'f:labels':
+            .: {}
+            'f:app.kubernetes.io/instance': {}
+            'f:velero.io/backup-name': {}
+            'f:velero.io/restore-name': {}
+data:
+  application.yaml: |-
+    spring: 
+      application: 
+        name: cmm-cpp-ediwcfload-task
+      batch: 
+        job: 
+          enabled: false
+      cloud: 
+        task: 
+          closecontext_enabled: true
+          name: ${spring.application.name}
+      data: 
+        jdbc: 
+          repositories: 
+            enabled: false
+      freemarker: 
+        check-template-location: false
+      jpa: 
+        properties: 
+          hibernate: 
+            jdbc: 
+              batch_size: 1000
+            order_inserts: true
+        show-sql: false
+      mail: 
+        host: smtpinternal.wellpoint.com
+      main: 
+        lazy-initialization: true
+    email:
+      toList: dl-ie3notification-test@anthem.com
+      bccList: dl-ie3notification-test@anthem.com
+      fromAddress: intge3autonotification@anthem.com
+      subject: EDI WCF Load Job Status - UAT ENV
+      emailnotifysubj: EDI WCF Load Job Notification - UAT ENV
+    datasource:
+      service: false
+      task: true

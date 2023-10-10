@@ -1,0 +1,74 @@
+﻿kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cmm-cpp-effcancelterm-task
+  namespace: cmm-uat
+  uid: 944d1aea-b10a-4731-b4d8-355f0179e1a9
+  resourceVersion: '103990948'
+  creationTimestamp: '2022-09-27T14:09:00Z'
+  labels:
+    app.kubernetes.io/instance: cmm-uat
+    velero.io/backup-name: migration-2fc5e-initial-f5gtx
+    velero.io/restore-name: migration-2fc5e-final-vdscp
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"v1","data":{"application.yaml":"spring:\n 
+      application:\n    name: cmm-cpp-effcancelterm-task\n  cloud:\n   
+      task:\n      closecontext-enabled: true\n      name:
+      ${spring.application.name}\n    \n  jpa:\n    show-sql: false\n    \n 
+      mail:\n    host: smtpinternal.wellpoint.com\n    \n  data:\n   
+      jdbc:\n      repositories:\n        enabled: false\ndatasource:\n 
+      service: false\n  task:
+      true"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"cmm-uat"},"name":"cmm-cpp-effcancelterm-task","namespace":"cmm-uat"}}
+  managedFields:
+    - manager: velero-server
+      operation: Update
+      apiVersion: v1
+      time: '2022-09-27T14:09:00Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          .: {}
+          'f:application.yaml': {}
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:kubectl.kubernetes.io/last-applied-configuration': {}
+          'f:labels':
+            .: {}
+            'f:app.kubernetes.io/instance': {}
+            'f:velero.io/backup-name': {}
+            'f:velero.io/restore-name': {}
+data:
+  application.yaml: |-
+    spring: 
+      application: 
+        name: cmm-cpp-effcancelTerm-task
+      batch: 
+        job: 
+          enabled: false
+      cloud: 
+        task: 
+          closecontext_enabled: true
+          name: ${spring.application.name}
+      data: 
+        jdbc: 
+          repositories: 
+            enabled: false
+      jpa: 
+        show-sql: true
+      mail: 
+        host: smtpinternal.wellpoint.com
+    datasource:
+      service: false
+      task: true 
+    effcanterm:
+      email:
+        toList: dl-ie3notification-test@anthem.com
+        fromAddress: intge3autonotification@anthem.com
+        bccList: ie3notification-test@anthem.com
+        subject: EMAIL Notification for Missed X12 Files
+        emailnotifysubj: EMAIL Notification for Missed X12 Files
+      spring:
+        mail:
+          host: smtpinternal.wellpoint.com

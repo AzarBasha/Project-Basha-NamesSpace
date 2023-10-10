@@ -1,0 +1,31 @@
+﻿kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: thin
+  uid: f8adafdc-94f0-4419-a7ca-af23c76146ba
+  resourceVersion: '3887'
+  creationTimestamp: '2022-08-02T14:24:50Z'
+  annotations:
+    storageclass.kubernetes.io/is-default-class: 'true'
+  managedFields:
+    - manager: cluster-storage-operator
+      operation: Update
+      apiVersion: storage.k8s.io/v1
+      time: '2022-08-02T14:24:50Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:storageclass.kubernetes.io/is-default-class': {}
+        'f:parameters':
+          .: {}
+          'f:diskformat': {}
+        'f:provisioner': {}
+        'f:reclaimPolicy': {}
+        'f:volumeBindingMode': {}
+provisioner: kubernetes.io/vsphere-volume
+parameters:
+  diskformat: thin
+reclaimPolicy: Delete
+volumeBindingMode: Immediate

@@ -1,0 +1,25 @@
+﻿apiVersion: snapshot.storage.k8s.io/v1
+deletionPolicy: Delete
+driver: csi.vsphere.vmware.com
+kind: VolumeSnapshotClass
+metadata:
+  annotations:
+    snapshot.storage.kubernetes.io/is-default-class: 'true'
+  creationTimestamp: '2023-07-13T02:21:49Z'
+  generation: 1
+  managedFields:
+    - apiVersion: snapshot.storage.k8s.io/v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:deletionPolicy': {}
+        'f:driver': {}
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:snapshot.storage.kubernetes.io/is-default-class': {}
+      manager: vmware-vsphere-csi-driver-operator
+      operation: Update
+      time: '2023-07-13T02:21:49Z'
+  name: csi-vsphere-vsc
+  resourceVersion: '761286128'
+  uid: 165f3d64-fb3f-43df-9246-ffd77324fd19

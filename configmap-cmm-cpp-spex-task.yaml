@@ -1,0 +1,152 @@
+﻿kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cmm-cpp-spex-task
+  namespace: cmm-uat
+  uid: 60f857e6-af6b-4485-ab54-7e08d9a99859
+  resourceVersion: '103990998'
+  creationTimestamp: '2022-09-27T14:09:01Z'
+  labels:
+    app.kubernetes.io/instance: cmm-uat
+    velero.io/backup-name: migration-2fc5e-initial-f5gtx
+    velero.io/restore-name: migration-2fc5e-final-vdscp
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"v1","data":{"application.yaml":"datasource:\n  service:
+      false\n  task: true\nsproc:\n  names:\n    RENWL_SWITCH_PASV:\n     
+      DBNAME:\n        SP: RNWL_SWITCH_PASV_HOLD\n      PARAMS:\n        JOB_ID:
+      JOB_ID_IN\n      STATUS:\n        STATUS_NAME: STATUS\n   
+      RENWL_PROCESS_PASV:\n      DBNAME:\n        SP:
+      RNWL_PROCESS_PASV_HOLD\n      PARAMS:\n        JOB_ID: JOB_ID_IN\n     
+      STATUS:\n        STATUS_NAME: STATUS\n    BPM:\n      DBNAME:\n        SP:
+      BPM_STG_LOAD_P\n      PARAMS:\n        JOB_ID: JOBID\n     
+      STATUS:\n        STATUS_NAME: SP_STATUS\n    ITEXT:\n     
+      DBNAME:\n        SP: ITXT_STG_LOAD_P\n      PARAMS:\n        JOB_ID:
+      JOBID\n      STATUS:\n        STATUS_NAME: SP_STATUS\n   
+      MAINT_STG:\n      DBNAME:\n        SP: MAINT_STAGE_SP\n     
+      PARAMS:\n        JOB_ID: jobid_in\n        jvmnm_in:\n        in_state:
+      ALL\n      STATUS:\n        STATUS_NAME: STATUS\n    MAINT_HOLD:\n     
+      DBNAME:\n        SP: MAINT_HOLD_SP\n      PARAMS:\n        JOB_ID:
+      jobid_in\n        in_state: ALL\n      STATUS:\n        STATUS_NAME:
+      STATUS\n    MAINT_DERIVE:\n      DBNAME:\n        SP:
+      MAINT_DERIVE_RES_SP\n      PARAMS:\n        JOB_ID: jobid_in\n       
+      in_state: ALL\n      STATUS:\n        STATUS_NAME: STATUS\n   
+      MAINT_RULE:\n      DBNAME:\n        SP: MAINT_RULE_PROCESS_SP\n     
+      PARAMS:\n        JOB_ID: jobid_in\n        in_state: ALL\n     
+      STATUS:\n        STATUS_NAME: STATUS\n    MAINT_ACTION:\n     
+      DBNAME:\n        SP: MAINT_ACTION_SP\n      PARAMS:\n        JOB_ID:
+      jobid_in\n        in_state: ALL\n      STATUS:\n        STATUS_NAME:
+      STATUS\n    SAV:\n      DBNAME:\n        SP: SAV_P\n      PARAMS:\n       
+      JOB_ID: BATCHID_IN\n        PARENT_JOB_ID: PARNT_JOB_ID\n     
+      STATUS:\n        STATUS_NAME:
+      STATUS"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"cmm-uat"},"name":"cmm-cpp-spex-task","namespace":"cmm-uat"}}
+  managedFields:
+    - manager: velero-server
+      operation: Update
+      apiVersion: v1
+      time: '2022-09-27T14:09:01Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          .: {}
+          'f:application.yaml': {}
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:kubectl.kubernetes.io/last-applied-configuration': {}
+          'f:labels':
+            .: {}
+            'f:app.kubernetes.io/instance': {}
+            'f:velero.io/backup-name': {}
+            'f:velero.io/restore-name': {}
+data:
+  application.yaml: |-
+    datasource:
+      service: false
+      task: true
+    sproc:
+      names:
+        RENWL_SWITCH_PASV:
+          DBNAME:
+            SP: RNWL_SWITCH_PASV_HOLD
+          PARAMS:
+            JOB_ID: JOB_ID_IN
+          STATUS:
+            STATUS_NAME: STATUS
+        RENWL_PROCESS_PASV:
+          DBNAME:
+            SP: RNWL_PROCESS_PASV_HOLD
+          PARAMS:
+            JOB_ID: JOB_ID_IN
+          STATUS:
+            STATUS_NAME: STATUS
+        BPM:
+          DBNAME:
+            SP: BPM_STG_LOAD_P
+          PARAMS:
+            JOB_ID: JOBID
+          STATUS:
+            STATUS_NAME: SP_STATUS
+        ITEXT:
+          DBNAME:
+            SP: ITXT_STG_LOAD_P
+          PARAMS:
+            JOB_ID: JOBID
+          STATUS:
+            STATUS_NAME: SP_STATUS
+        MAINT_STG:
+          DBNAME:
+            SP: MAINT_STAGE_SP
+          PARAMS:
+            JOB_ID: jobid_in
+            jvmnm_in:
+            in_state: ALL
+          STATUS:
+            STATUS_NAME: STATUS
+        MAINT_HOLD:
+          DBNAME:
+            SP: MAINT_HOLD_SP
+          PARAMS:
+            JOB_ID: jobid_in
+            in_state: ALL
+          STATUS:
+            STATUS_NAME: STATUS
+        MAINT_DERIVE:
+          DBNAME:
+            SP: MAINT_DERIVE_RES_SP
+          PARAMS:
+            JOB_ID: jobid_in
+            in_state: ALL
+          STATUS:
+            STATUS_NAME: STATUS
+        MAINT_RULE:
+          DBNAME:
+            SP: MAINT_RULE_PROCESS_SP
+          PARAMS:
+            JOB_ID: jobid_in
+            in_state: ALL
+          STATUS:
+            STATUS_NAME: STATUS
+        MAINT_ACTION:
+          DBNAME:
+            SP: MAINT_ACTION_SP
+          PARAMS:
+            JOB_ID: jobid_in
+            in_state: ALL
+          STATUS:
+            STATUS_NAME: STATUS
+        SAV:
+          DBNAME:
+            SP: SAV_P
+          PARAMS:
+            JOB_ID: BATCHID_IN
+            PARENT_JOB_ID: PARNT_JOB_ID
+          STATUS:
+            STATUS_NAME: STATUS
+        BRKR_SUPP:
+          DBNAME:
+            SP: BRKR_SUPP_LOAD_P
+          PARAMS:
+            JOB_ID: JOBID
+          STATUS:
+            STATUS_NAME: SP_STATUS

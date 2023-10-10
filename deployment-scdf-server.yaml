@@ -1,0 +1,327 @@
+﻿kind: Deployment
+apiVersion: apps/v1
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: '3'
+    openshift.io/backup-registry-hostname: 'image-registry.openshift-image-registry.svc:5000'
+    openshift.io/backup-server-version: '1.21'
+    openshift.io/restore-registry-hostname: 'image-registry.openshift-image-registry.svc:5000'
+    openshift.io/restore-server-version: '1.21'
+  resourceVersion: '950931051'
+  name: scdf-server
+  uid: f1bea202-9129-49eb-84f5-f037d5815fc6
+  creationTimestamp: '2023-04-11T10:57:11Z'
+  generation: 7
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: apps/v1
+      time: '2023-09-11T16:24:35Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:openshift.io/backup-registry-hostname': {}
+            'f:openshift.io/backup-server-version': {}
+            'f:openshift.io/restore-registry-hostname': {}
+            'f:openshift.io/restore-server-version': {}
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:migration.openshift.io/migrated-by-migmigration': {}
+            'f:migration.openshift.io/migrated-by-migplan': {}
+            'f:velero.io/backup-name': {}
+            'f:velero.io/restore-name': {}
+        'f:spec':
+          'f:progressDeadlineSeconds': {}
+          'f:revisionHistoryLimit': {}
+          'f:selector': {}
+          'f:strategy':
+            'f:rollingUpdate':
+              .: {}
+              'f:maxSurge': {}
+              'f:maxUnavailable': {}
+            'f:type': {}
+          'f:template':
+            'f:metadata':
+              'f:labels':
+                .: {}
+                'f:app': {}
+            'f:spec':
+              'f:volumes':
+                .: {}
+                'k:{"name":"cmmnp2"}':
+                  .: {}
+                  'f:name': {}
+                  'f:persistentVolumeClaim':
+                    .: {}
+                    'f:claimName': {}
+                'k:{"name":"ie3np2"}':
+                  .: {}
+                  'f:name': {}
+                  'f:persistentVolumeClaim':
+                    .: {}
+                    'f:claimName': {}
+              'f:containers':
+                'k:{"name":"scdf-server"}':
+                  'f:image': {}
+                  'f:volumeMounts':
+                    .: {}
+                    'k:{"mountPath":"cmm"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                    'k:{"mountPath":"ie3"}':
+                      .: {}
+                      'f:mountPath': {}
+                      'f:name': {}
+                  'f:terminationMessagePolicy': {}
+                  .: {}
+                  'f:resources':
+                    .: {}
+                    'f:limits':
+                      .: {}
+                      'f:cpu': {}
+                      'f:memory': {}
+                    'f:requests':
+                      .: {}
+                      'f:cpu': {}
+                      'f:memory': {}
+                  'f:env':
+                    'k:{"name":"spring.datasource.username"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"KUBERNETES_NAMESPACE"}':
+                      .: {}
+                      'f:name': {}
+                      'f:valueFrom':
+                        .: {}
+                        'f:fieldRef': {}
+                    'k:{"name":"spring.datasource.password"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"TZ"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"SPRING_CLOUD_DATAFLOW_FEATURES_SCHEDULES_ENABLED"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"SPRING_CLOUD_SKIPPER_CLIENT_SERVER_URI"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    .: {}
+                    'k:{"name":"spring.datasource.driver-class-name"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"SPRING_CLOUD_CONFIG_ENABLED"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"SPRING_CLOUD_DATAFLOW_TASK_COMPOSEDTASKRUNNER_URI"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"SPRING_CLOUD_DATAFLOW_FEATURES_ANALYTICS_ENABLED"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"spring.datasource.url"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"SPRING_APPLICATION_JSON"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"SPRING_CLOUD_TASK_CLOSECONTEXT_ENABLED"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"SPRING_CLOUD_KUBERNETES_SECRETS_ENABLE_API"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"SPRING_CLOUD_KUBERNETES_CONFIG_NAME"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                    'k:{"name":"SPRING_CLOUD_DATAFLOW_SERVER_URI"}':
+                      .: {}
+                      'f:name': {}
+                      'f:value': {}
+                  'f:terminationMessagePath': {}
+                  'f:imagePullPolicy': {}
+                  'f:ports':
+                    .: {}
+                    'k:{"containerPort":80,"protocol":"TCP"}':
+                      .: {}
+                      'f:containerPort': {}
+                      'f:protocol': {}
+                  'f:name': {}
+              'f:dnsPolicy': {}
+              'f:serviceAccount': {}
+              'f:restartPolicy': {}
+              'f:schedulerName': {}
+              'f:terminationGracePeriodSeconds': {}
+              'f:serviceAccountName': {}
+              'f:securityContext': {}
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: apps/v1
+      time: '2023-09-23T19:26:41Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:deployment.kubernetes.io/revision': {}
+        'f:status':
+          'f:availableReplicas': {}
+          'f:conditions':
+            .: {}
+            'k:{"type":"Available"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Progressing"}':
+              .: {}
+              'f:lastTransitionTime': {}
+              'f:lastUpdateTime': {}
+              'f:message': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:observedGeneration': {}
+          'f:readyReplicas': {}
+          'f:replicas': {}
+          'f:updatedReplicas': {}
+      subresource: status
+  namespace: cmm-uat
+  labels:
+    app: scdf-server
+    migration.openshift.io/migrated-by-migmigration: e1397e23-a7a8-4719-b7db-073b2f49f2e3
+    migration.openshift.io/migrated-by-migplan: c13e708d-706a-4dd6-9c76-09edd9127694
+    velero.io/backup-name: migration-2fc5e-initial-f5gtx
+    velero.io/restore-name: migration-2fc5e-final-vdscp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: scdf-server
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: scdf-server
+    spec:
+      restartPolicy: Always
+      serviceAccountName: scdf-sa
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 30
+      securityContext: {}
+      containers:
+        - resources:
+            limits:
+              cpu: '2'
+              memory: 12Gi
+            requests:
+              cpu: '1'
+              memory: 4Gi
+          terminationMessagePath: /dev/termination-log
+          name: scdf-server
+          env:
+            - name: KUBERNETES_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.namespace
+            - name: SPRING_CLOUD_CONFIG_ENABLED
+              value: 'false'
+            - name: TZ
+              value: GMT
+            - name: SPRING_CLOUD_DATAFLOW_FEATURES_ANALYTICS_ENABLED
+              value: 'true'
+            - name: SPRING_CLOUD_DATAFLOW_FEATURES_SCHEDULES_ENABLED
+              value: 'true'
+            - name: SPRING_CLOUD_KUBERNETES_SECRETS_ENABLE_API
+              value: 'true'
+            - name: SPRING_CLOUD_KUBERNETES_CONFIG_NAME
+              value: scdf-server
+            - name: SPRING_CLOUD_DATAFLOW_SERVER_URI
+              value: 'http://10.91.131.69:9393'
+            - name: SPRING_CLOUD_SKIPPER_CLIENT_SERVER_URI
+              value: 'http://10.91.245.96:7577/api'
+            - name: SPRING_APPLICATION_JSON
+              value: >-
+                { "maven": { "local-repository": null, "remote-repositories": {
+                "repo1": { "url": "https://repo.spring.io/libs-snapshot"} } } }
+            - name: spring.datasource.url
+              value: 'jdbc:oracle:thin:@dc04dx22-scan1.internal.das:1525/CMMENRL2T'
+            - name: spring.datasource.username
+              value: E3CORE
+            - name: spring.datasource.password
+              value: 'E3core2t#123'
+            - name: spring.datasource.driver-class-name
+              value: oracle.jdbc.driver.OracleDriver
+            - name: SPRING_CLOUD_DATAFLOW_TASK_COMPOSEDTASKRUNNER_URI
+              value: >-
+                docker:image-registry.openshift-image-registry.svc:5000/cmm-uat/cmm-cpp-system-composedtaskrunner-j11:latest
+            - name: SPRING_CLOUD_TASK_CLOSECONTEXT_ENABLED
+              value: 'true'
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: cmmnp2
+              mountPath: cmm
+            - name: ie3np2
+              mountPath: ie3
+          terminationMessagePolicy: File
+          image: >-
+            image-registry.openshift-image-registry.svc:5000/cmm-uat/cmm-cpp-system-dataflowengine-j11:latest
+      serviceAccount: scdf-sa
+      volumes:
+        - name: cmmnp2
+          persistentVolumeClaim:
+            claimName: cmmnp2
+        - name: ie3np2
+          persistentVolumeClaim:
+            claimName: ie3np2
+      dnsPolicy: ClusterFirst
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
+status:
+  observedGeneration: 7
+  replicas: 1
+  updatedReplicas: 1
+  readyReplicas: 1
+  availableReplicas: 1
+  conditions:
+    - type: Progressing
+      status: 'True'
+      lastUpdateTime: '2023-09-11T16:24:39Z'
+      lastTransitionTime: '2023-04-11T10:57:11Z'
+      reason: NewReplicaSetAvailable
+      message: ReplicaSet "scdf-server-7c7d48d5ff" has successfully progressed.
+    - type: Available
+      status: 'True'
+      lastUpdateTime: '2023-09-23T19:26:41Z'
+      lastTransitionTime: '2023-09-23T19:26:41Z'
+      reason: MinimumReplicasAvailable
+      message: Deployment has minimum availability.

@@ -1,0 +1,126 @@
+﻿kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cmm-cpp-ta1999-task
+  namespace: cmm-uat
+  uid: 85ffd5a9-aa0f-4a3a-8c8f-357735b43149
+  resourceVersion: '103991000'
+  creationTimestamp: '2022-09-27T14:09:01Z'
+  labels:
+    app.kubernetes.io/instance: cmm-uat
+    velero.io/backup-name: migration-2fc5e-initial-f5gtx
+    velero.io/restore-name: migration-2fc5e-final-vdscp
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"v1","data":{"application.yaml":"spring:\n  profiles:\n   
+      active: uat\n  application:\n    name: cmm-cpp-ta1999-task\n  cloud:\n   
+      task:\n      closecontext-enabled: true\n      name:
+      ${spring.application.name}\n  jpa:\n    show-sql: false  \n   
+      properties:\n      hibernate:\n        '[enable_lazy_load_no_trans]':
+      true\n\nemail:\n  from: intge3autonotification@anthem.com\n  toList:
+      dl-ie3notification-test@anthem.com\n  ccList:
+      dl-ie3notification-test@anthem.com\n  bccList:
+      dl-ie3notification-test@anthem.com\n  subject: TA1-999 Task Files
+      Status-UAT ENV\n  enabled: true\n   \ndatasource:\n  service: false\n 
+      task: true\nta1:\n  threadCount: 1\n  l2ThreadCounts: 1\n 
+      kySbmVerLeaseGS08: X*005010X220A1\n  kySbmGS03: KENTUCKYEXCH\n  kySbmGS02:
+      KYIHIXE\n  threadCountMbr: 10\n  sendOutFileStateList: DISABLED\n 
+      pullFilesFromSFTP: TRUE\n  filePermissionCode: 0777\n  nvHltHiosid:
+      60156\n  nvDenHiosid: 33670\n  txErrorCodes: 46555\n  checkExResendQuery:
+      SELECT ME.MBR_ENRL_ID FROM MEMBER_ENROLLMENT ME INNER JOIN
+      APPLICATION_SOURCE SRC ON SRC.APP_SRC_ID=ME.SOURCEID INNER JOIN MBR_DETAIL
+      MD ON MD.MBR_ENRL_ID=ME.MBR_ENRL_ID INNER JOIN MBR_RPT_CATEGORIES MRC ON
+      MRC.MEMBERID=MD.MEMBERID AND MRC.MEM_RPT_CAT_NAME ='REQUEST SUBMIT
+      TIMESTAMP' INNER JOIN STATUS ST ON ST.STATUSID =ME.STATUSID AND
+      ST.STATUS_NAME NOT IN ('Exchange Resend','Enrolled') WHERE MD.ISSUBSCRIBER
+      =1 AND MEM_RPT_CAT_REF_ID IS NOT NULL AND ME.BGN_DATE IS NOT NULL AND
+      SRC.STATE_CODE IN ('CA') AND (ME.BGN_DATE)
+      \u003eTO_TIMESTAMP(SUBSTR(MRC.MEM_RPT_CAT_REF_ID,1,12),'YYYYMMDDHH24MISS')
+      AND (ME.BGN_DATE -
+      (TO_TIMESTAMP(SUBSTR(MRC.MEM_RPT_CAT_REF_ID,1,12),'YYYYMMDDHH24MISS')))\u003e=
+      NUMTODSINTERVAL(48,'HOUR') AND TRUNC(ME.CREATED_DT) \u003e=TRUNC(SYSDATE)
+      ORDER BY 1 DESC\n  updateExResendQuery: update MEMBER_ENROLLMENT set
+      queueid =?, statusid=? where mbr_enrl_id=?\n  ethInsertQuery: INSERT INTO
+      ENROLL_TRANS_HIST
+      (ENRLTRANSCTNID,QUEUEID,STATUSID,MBR_ENRL_ID,DETAIL,CREATED_DT,
+      CREATED_BY,FILE_NAME,SOURCE_SYSTEM,TARGET_SYSTEM) VALUES
+      (ENRL_TRANS_SEQ.nextval,?, ?, ?, ?, ?, ?, ?, ?, ?)\n  sixBytesISAIEASates:
+      NY\n  dupBGN: UPDATE MEMBER_ENROLLMENT ME1 SET ME1.STATUSID =(SELECT
+      STATUSID FROM STATUS WHERE STATUS_NAME='Duplicate
+      Enrollment'),ME1.QUEUEID=(SELECT QUEUEID FROM QUEUE WHERE NAME='Voided
+      Enrollment' AND IS_ACTIVE=1)WHERE ME1.MBR_ENRL_ID IN (SELECT MBR_ENRL_ID
+      FROM(SELECT
+      ME.QUEUEID,ME.SOURCEID,ME.MBR_ENRL_ID,ME.BGN02_NUMBER,ME.STATUSID,ME.CREATED_DT,ROW_NUMBER()
+      OVER (PARTITION BY BGN02_NUMBER ORDER BY ME.MBR_ENRL_ID ASC) AS LATEST
+      FROM MEMBER_ENROLLMENT ME INNER JOIN APPLICATION_SOURCE APP ON
+      APP.APP_SRC_ID=ME.SOURCEID WHERE APP.STATE_CODE IN ('KY','ME') AND
+      APP.EXCHANGEFLAG  =1 AND APP.EXCH_SOURCE_UI LIKE '%SB%' AND
+      ME.BGN02_NUMBER IS NOT NULL AND trunc(ME.CREATED_DT)\u003e='26-JUN-21')
+      WHERE LATEST \u003e1) AND ME1.STATUSID NOT IN (SELECT STATUSID FROM STATUS
+      WHERE STATUS_NAME IN ('Duplicate Enrollment','Enrolled','Rejected to
+      Exchange'))"},"kind":"ConfigMap","metadata":{"annotations":{},"labels":{"app.kubernetes.io/instance":"cmm-uat"},"name":"cmm-cpp-ta1999-task","namespace":"cmm-uat"}}
+  managedFields:
+    - manager: velero-server
+      operation: Update
+      apiVersion: v1
+      time: '2022-09-27T14:09:01Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          .: {}
+          'f:application.yaml': {}
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:kubectl.kubernetes.io/last-applied-configuration': {}
+          'f:labels':
+            .: {}
+            'f:app.kubernetes.io/instance': {}
+            'f:velero.io/backup-name': {}
+            'f:velero.io/restore-name': {}
+data:
+  application.yaml: |-
+    spring:
+      profiles:
+        active: uat
+      application:
+        name: cmm-cpp-ta1999-task
+      cloud:
+        task:
+          closecontext-enabled: true
+          name: ${spring.application.name}
+      jpa:
+        show-sql: false  
+        properties:
+          hibernate:
+            '[enable_lazy_load_no_trans]': true
+
+    email:
+      from: intge3autonotification@anthem.com
+      toList: dl-ie3notification-test@anthem.com
+      ccList: dl-ie3notification-test@anthem.com
+      bccList: dl-ie3notification-test@anthem.com
+      subject: TA1-999 Task Files Status-UAT ENV
+      enabled: true
+       
+    datasource:
+      service: false
+      task: true
+    ta1:
+      threadCount: 1
+      l2ThreadCounts: 1
+      kySbmVerLeaseGS08: X*005010X220A1
+      kySbmGS03: KENTUCKYEXCH
+      kySbmGS02: KYIHIXE
+      threadCountMbr: 10
+      sendOutFileStateList: DISABLED
+      pullFilesFromSFTP: TRUE
+      filePermissionCode: 0777
+      nvHltHiosid: 60156
+      nvDenHiosid: 33670
+      txErrorCodes: 46555
+      checkExResendQuery: SELECT ME.MBR_ENRL_ID FROM MEMBER_ENROLLMENT ME INNER JOIN APPLICATION_SOURCE SRC ON SRC.APP_SRC_ID=ME.SOURCEID INNER JOIN MBR_DETAIL MD ON MD.MBR_ENRL_ID=ME.MBR_ENRL_ID INNER JOIN MBR_RPT_CATEGORIES MRC ON MRC.MEMBERID=MD.MEMBERID AND MRC.MEM_RPT_CAT_NAME ='REQUEST SUBMIT TIMESTAMP' INNER JOIN STATUS ST ON ST.STATUSID =ME.STATUSID AND ST.STATUS_NAME NOT IN ('Exchange Resend','Enrolled') WHERE MD.ISSUBSCRIBER =1 AND MEM_RPT_CAT_REF_ID IS NOT NULL AND ME.BGN_DATE IS NOT NULL AND SRC.STATE_CODE IN ('CA') AND (ME.BGN_DATE) >TO_TIMESTAMP(SUBSTR(MRC.MEM_RPT_CAT_REF_ID,1,12),'YYYYMMDDHH24MISS') AND (ME.BGN_DATE - (TO_TIMESTAMP(SUBSTR(MRC.MEM_RPT_CAT_REF_ID,1,12),'YYYYMMDDHH24MISS')))>= NUMTODSINTERVAL(48,'HOUR') AND TRUNC(ME.CREATED_DT) >=TRUNC(SYSDATE) ORDER BY 1 DESC
+      updateExResendQuery: update MEMBER_ENROLLMENT set queueid =?, statusid=? where mbr_enrl_id=?
+      ethInsertQuery: INSERT INTO ENROLL_TRANS_HIST (ENRLTRANSCTNID,QUEUEID,STATUSID,MBR_ENRL_ID,DETAIL,CREATED_DT, CREATED_BY,FILE_NAME,SOURCE_SYSTEM,TARGET_SYSTEM) VALUES (ENRL_TRANS_SEQ.nextval,?, ?, ?, ?, ?, ?, ?, ?, ?)
+      sixBytesISAIEASates: NY
+      dupBGN: UPDATE MEMBER_ENROLLMENT ME1 SET ME1.STATUSID =(SELECT STATUSID FROM STATUS WHERE STATUS_NAME='Duplicate Enrollment'),ME1.QUEUEID=(SELECT QUEUEID FROM QUEUE WHERE NAME='Voided Enrollment' AND IS_ACTIVE=1)WHERE ME1.MBR_ENRL_ID IN (SELECT MBR_ENRL_ID FROM(SELECT ME.QUEUEID,ME.SOURCEID,ME.MBR_ENRL_ID,ME.BGN02_NUMBER,ME.STATUSID,ME.CREATED_DT,ROW_NUMBER() OVER (PARTITION BY BGN02_NUMBER ORDER BY ME.MBR_ENRL_ID ASC) AS LATEST FROM MEMBER_ENROLLMENT ME INNER JOIN APPLICATION_SOURCE APP ON APP.APP_SRC_ID=ME.SOURCEID WHERE APP.STATE_CODE IN ('KY','ME') AND APP.EXCHANGEFLAG  =1 AND APP.EXCH_SOURCE_UI LIKE '%SB%' AND ME.BGN02_NUMBER IS NOT NULL AND trunc(ME.CREATED_DT)>='26-JUN-21') WHERE LATEST >1) AND ME1.STATUSID NOT IN (SELECT STATUSID FROM STATUS WHERE STATUS_NAME IN ('Duplicate Enrollment','Enrolled','Rejected to Exchange'))

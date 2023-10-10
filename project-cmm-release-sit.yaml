@@ -1,0 +1,84 @@
+﻿kind: Project
+apiVersion: project.openshift.io/v1
+metadata:
+  name: cmm-release-sit
+  uid: d01dc03a-249d-41e4-8b39-a13626f1a0ef
+  resourceVersion: '3080347019'
+  creationTimestamp: '2022-08-10T11:50:12Z'
+  labels:
+    size: kc24xlarge
+    kubernetes.io/metadata.name: cmm-release-sit
+    argocd-role: managed
+    openshift-pipelines.tekton.dev/namespace-reconcile-version: 1.10.5
+    pod-security.kubernetes.io/warn: baseline
+    pod-security.kubernetes.io/audit: baseline
+    pod-security.kubernetes.io/warn-version: v1.24
+    argocd-managed-by: cmm-devops
+    team: cmm-release
+    pod-security.kubernetes.io/audit-version: v1.24
+  annotations:
+    openshift.io/sa.scc.mcs: 's0:c28,c7'
+    openshift.io/sa.scc.supplemental-groups: 1000770000/10000
+    openshift.io/sa.scc.uid-range: 1000770000/10000
+  managedFields:
+    - manager: manager
+      operation: Update
+      apiVersion: v1
+      time: '2022-08-10T11:50:12Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            .: {}
+            'f:kubernetes.io/metadata.name': {}
+            'f:team': {}
+    - manager: openshift-pipelines-operator
+      operation: Update
+      apiVersion: v1
+      time: '2022-08-10T11:50:14Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            'f:openshift-pipelines.tekton.dev/namespace-reconcile-version': {}
+    - manager: kubectl-label
+      operation: Update
+      apiVersion: v1
+      time: '2022-09-05T13:36:37Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            'f:argocd-managed-by': {}
+            'f:argocd-role': {}
+    - manager: cluster-policy-controller
+      operation: Update
+      apiVersion: v1
+      time: '2023-06-29T02:20:53Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:openshift.io/sa.scc.mcs': {}
+            'f:openshift.io/sa.scc.supplemental-groups': {}
+            'f:openshift.io/sa.scc.uid-range': {}
+          'f:labels':
+            'f:pod-security.kubernetes.io/audit': {}
+            'f:pod-security.kubernetes.io/audit-version': {}
+            'f:pod-security.kubernetes.io/warn': {}
+            'f:pod-security.kubernetes.io/warn-version': {}
+    - manager: kubectl-edit
+      operation: Update
+      apiVersion: v1
+      time: '2023-09-28T13:56:02Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:labels':
+            'f:size': {}
+spec:
+  finalizers:
+    - kubernetes
+status:
+  phase: Active
